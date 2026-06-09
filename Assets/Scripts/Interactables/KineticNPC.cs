@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 
 /// <summary>
-/// Not done
+/// NPCS whose dialogue moves forward without player choice or branching paths
+/// Named after kinetic visual novels
 /// </summary>
-public class NPC : MonoBehaviour, IInteractable
+public class KineticNPC : MonoBehaviour, IInteractable
 {
     [Header("Dialogue ScriptableObject")]
     public NPCDialogue dialogueData;
@@ -74,10 +75,14 @@ public class NPC : MonoBehaviour, IInteractable
         isTyping = true;
         dialogueText.SetText("");
 
+        //
         foreach (char c in dialogueData.dialogueLines[dialogueIndex])
         {
-            dialogueText.text += c;
-            yield return new WaitForSeconds(dialogueData.typingSpeed);
+            if(dialogueText.text.Length < 135)
+            {
+                dialogueText.text += c;
+                yield return new WaitForSeconds(dialogueData.typingSpeed);
+            }
         }
 
         isTyping = false;
