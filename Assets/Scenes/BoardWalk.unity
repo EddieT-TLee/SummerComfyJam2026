@@ -1051,7 +1051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1844719316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1212,6 +1212,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1327102494}
+    - target: {fileID: 6146033774711409051, guid: 517acb0a726924838a8215e5e32ab7c9, type: 3}
+      propertyPath: DialoguePanel
+      value: 
+      objectReference: {fileID: 1844719315}
     - target: {fileID: 8382748030935341111, guid: 517acb0a726924838a8215e5e32ab7c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.47
@@ -1266,9 +1270,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 587820415}
+    - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: 288ed006b6c51482183026210a907ebe, type: 2}
+    - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1288920491}
+    - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
+      propertyPath: dialoguePanel
+      value: 
+      objectReference: {fileID: 1844719315}
+    - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
+      propertyPath: dialoguoPanel
+      value: 
+      objectReference: {fileID: 1844719315}
+    - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
+      propertyPath: portraitImage
+      value: 
+      objectReference: {fileID: 1127821495}
     - target: {fileID: 512704639921393801, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
       propertyPath: m_Name
       value: NPC

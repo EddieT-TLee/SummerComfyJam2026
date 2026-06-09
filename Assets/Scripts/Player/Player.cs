@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     private InputAction moveAction;
     private Rigidbody2D rb; // Players rigidbody used for movement
+    [SerializeField]
+    private GameObject DialoguePanel; // Im Lazy to code up where to find this
     
 
     void Awake()
@@ -21,11 +23,14 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Vector2 input = moveAction.ReadValue<Vector2>();
-        rb.linearVelocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
+        if(!DialoguePanel.activeSelf) // Disable movement if player is talking to someone
+        {
+            Vector2 input = moveAction.ReadValue<Vector2>();
+            rb.linearVelocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
+        }
        
-        // If a scene is bigger it will have have a camera that follows
-        // If its a scene like a room it has a fixed camera
+        // If a scene is bigger it will have a camera that follows
+        // If it's a scene like a room it has a fixed camera
         if(playerCamera.CompareTag("Follow"))
             playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10); 
     }

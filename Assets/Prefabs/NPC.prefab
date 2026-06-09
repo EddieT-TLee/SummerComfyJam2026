@@ -179,3 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d2bb3798e924f0c9e98cb74ddef9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  dialogueData: {fileID: 11400000, guid: 288ed006b6c51482183026210a907ebe, type: 2}
+  dialoguoPanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  nameText: {fileID: 0}
+  portraitImage: {fileID: 0}

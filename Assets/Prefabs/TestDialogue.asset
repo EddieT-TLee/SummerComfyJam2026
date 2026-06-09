@@ -17,5 +17,5 @@ MonoBehaviour:
   dialogueLines:
   - oi bruv
   - fuck off
-  typingSpeed: 0
+  typingSpeed: 0.05
   voicePitch: 1
