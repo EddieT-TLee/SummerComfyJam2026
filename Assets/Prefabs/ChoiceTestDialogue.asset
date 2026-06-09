@@ -10,13 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
-  m_Name: TestDialogue
+  m_Name: ChoiceTestDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Test
   npcPortrait: {fileID: -3049322125240120499, guid: 3493164417e224c7c837f8356ae54bc1, type: 3}
   dialogueLines:
   - oi bruv
-  - fuck off
-  - Char Limit test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  - can you help
   typingSpeed: 0.05
-  dialogueChoices: []
+  dialogueChoices:
+  - DialogueIndex: 1
+    choice: yeh
+    choiceLines:
+    - hell yeah
+    - Type shit!
+  - DialogueIndex: 1
+    choice: nah
+    choiceLines:
+    - fuck you
+    - loser

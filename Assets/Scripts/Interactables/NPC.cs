@@ -1,26 +1,28 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-/// <summary>
-/// NPCS whose dialogue moves forward without player choice or branching paths
-/// Named after kinetic visual novels
-/// </summary>
-public class KineticNPC : MonoBehaviour, IInteractable
+public class NPC : MonoBehaviour, IInteractable
 {
     [Header("Dialogue ScriptableObject")]
     public NPCDialogue dialogueData;
-    [Header("Dialogue UI Elements")]
-    public GameObject dialoguePanel;
-    public TMP_Text dialogueText, nameText;
-    public Image portraitImage;
-
+   
+    private DialogueController dialogueUI;
     private int dialogueIndex;
+    private String[] dialogueLines;
     private bool isTyping, isDialogueActive;
 
-    
+
+    private void Start()
+    {
+        dialogueUI = DialogueController.instance;
+        dialogueLines = dialogueData.dialogueLines;
+        dialogueIndex = 0;
+    }
+
     public bool CanInteract()
     {
         return !isDialogueActive;
@@ -43,13 +45,10 @@ public class KineticNPC : MonoBehaviour, IInteractable
     {
         isDialogueActive = true;
         dialogueIndex = 0;
-
-        portraitImage.sprite = dialogueData.npcPortrait;
-        nameText.SetText(dialogueData.npcName);
         
-        dialoguePanel.SetActive(true);
+        dialogueUI.SetNPCInfo(dialogueData.npcName, dialogueData.npcPortrait);
+        dialogueUI.ShowDialogueUI(true);
         StartCoroutine(TypeLine());
-
     }
 
     void NextLine()
@@ -57,10 +56,10 @@ public class KineticNPC : MonoBehaviour, IInteractable
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueText.SetText(dialogueData.dialogueLines[dialogueIndex]);
+            dialogueUI.SetDialogueText(dialogueLines[dialogueIndex]);
             isTyping = false;
         } 
-        else if (++dialogueIndex < dialogueData.dialogueLines.Length)
+        else if (++dialogueIndex < dialogueLines.Length)
         {
             StartCoroutine(TypeLine());
         }
@@ -73,14 +72,13 @@ public class KineticNPC : MonoBehaviour, IInteractable
     IEnumerator TypeLine()
     {
         isTyping = true;
-        dialogueText.SetText("");
-
-        //
-        foreach (char c in dialogueData.dialogueLines[dialogueIndex])
+        dialogueUI.SetDialogueText("");
+        
+        foreach (char c in dialogueLines[dialogueIndex])
         {
-            if(dialogueText.text.Length < 135)
+            if(dialogueUI.dialogueText.text.Length < 135)
             {
-                dialogueText.text += c;
+                dialogueUI.SetDialogueText(dialogueUI.dialogueText.text += c);
                 yield return new WaitForSeconds(dialogueData.typingSpeed);
             }
         }
@@ -92,8 +90,8 @@ public class KineticNPC : MonoBehaviour, IInteractable
     {
         StopAllCoroutines();
         isDialogueActive = false;
-        dialogueText.SetText("");
-        dialoguePanel.SetActive(false);
+        dialogueUI.SetDialogueText("");
+        dialogueUI.ShowDialogueUI(false);
     }
 
 }

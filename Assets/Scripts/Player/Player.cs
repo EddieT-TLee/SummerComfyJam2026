@@ -23,12 +23,19 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(!DialoguePanel.activeSelf) // Disable movement if player is talking to someone
+        if(DialoguePanel.activeSelf) // Disable movement if player is talking to someone
         {
-            Vector2 input = moveAction.ReadValue<Vector2>();
-            rb.linearVelocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
+            rb.linearVelocity = Vector2.zero;
+            return;
         }
-       
+        Vector2 input = moveAction.ReadValue<Vector2>();
+
+        
+        rb.linearVelocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
+    }
+    
+    void LateUpdate() // Stops the Camera from lagging behind player movement
+    {
         // If a scene is bigger it will have a camera that follows
         // If it's a scene like a room it has a fixed camera
         if(playerCamera.CompareTag("Follow"))
