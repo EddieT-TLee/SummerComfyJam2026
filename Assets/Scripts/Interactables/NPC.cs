@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    [Header("Dialogue ScriptableObject")]
-    public NPCDialogue dialogueData;
-   
+    [Header("Dialogue ScriptableObject")] public NPCDialogue dialogueData;
+
     private DialogueController dialogueUI;
     private int dialogueIndex;
-    private String[] dialogueLines;
-    private bool isTyping, isDialogueActive;
+    private DialogueLine[] dialogueLines;
+    private bool isTyping, isDialogueActive, hasChoice;
+    private bool reset;
 
 
     private void Start()
@@ -21,14 +21,15 @@ public class NPC : MonoBehaviour, IInteractable
         dialogueUI = DialogueController.instance;
         dialogueLines = dialogueData.dialogueLines;
         dialogueIndex = 0;
+        reset = false;
     }
 
     public bool CanInteract()
     {
         return !isDialogueActive;
     }
-    
-    
+
+
     public void Interact()
     {
         if (isDialogueActive)
@@ -40,15 +41,15 @@ public class NPC : MonoBehaviour, IInteractable
             StartDialogue();
         }
     }
-    
+
     void StartDialogue()
     {
         isDialogueActive = true;
         dialogueIndex = 0;
-        
+
         dialogueUI.SetNPCInfo(dialogueData.npcName, dialogueData.npcPortrait);
         dialogueUI.ShowDialogueUI(true);
-        StartCoroutine(TypeLine());
+        DisplayCurrentLine();
     }
 
     void NextLine()
@@ -56,16 +57,36 @@ public class NPC : MonoBehaviour, IInteractable
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueUI.SetDialogueText(dialogueLines[dialogueIndex]);
+            dialogueUI.SetDialogueText(dialogueLines[dialogueIndex].text);
             isTyping = false;
-        } 
-        else if (++dialogueIndex < dialogueLines.Length)
-        {
-            StartCoroutine(TypeLine());
+            return;
         }
-        else
+
+        //Clear any choices
+        dialogueUI.ClearChoices();
+
+        DialogueLine current = dialogueLines[dialogueIndex];
+
+        //Check if choices exist for line and display
+        if (current.choices.Length > 0)
         {
-            EndDialogue();
+            foreach (var choice in current.choices)
+                dialogueUI.CreateChoiceButton(choice.choiceText,
+                    () => ChooseOption(choice));
+            return;
+        }
+
+
+        if (!hasChoice)
+        {
+            if (++dialogueIndex < dialogueLines.Length)
+            {
+                DisplayCurrentLine();
+            }
+            else
+            {
+                EndDialogue();
+            }
         }
     }
 
@@ -73,10 +94,10 @@ public class NPC : MonoBehaviour, IInteractable
     {
         isTyping = true;
         dialogueUI.SetDialogueText("");
-        
-        foreach (char c in dialogueLines[dialogueIndex])
+
+        foreach (char c in dialogueLines[dialogueIndex].text)
         {
-            if(dialogueUI.dialogueText.text.Length < 135)
+            if (dialogueUI.dialogueText.text.Length < 135)
             {
                 dialogueUI.SetDialogueText(dialogueUI.dialogueText.text += c);
                 yield return new WaitForSeconds(dialogueData.typingSpeed);
@@ -86,12 +107,37 @@ public class NPC : MonoBehaviour, IInteractable
         isTyping = false;
     }
 
+    void ChooseOption(DialogueChoice choice)
+    {
+        dialogueUI.ClearChoices();
+        // Convert the array of choice lines into dialogue lines
+        dialogueLines = Array.ConvertAll(choice.choiceLines,
+            choiceLine => new DialogueLine {text = choiceLine, choices = Array.Empty<DialogueChoice>()});
+
+        if (choice.resetDialogue)
+        {
+            reset = true;
+        }
+        dialogueIndex = 0;
+        DisplayCurrentLine();
+    }
+
+    void DisplayCurrentLine()
+    {
+        StopAllCoroutines();
+        StartCoroutine(TypeLine());
+    }
+
     void EndDialogue()
     {
         StopAllCoroutines();
         isDialogueActive = false;
         dialogueUI.SetDialogueText("");
         dialogueUI.ShowDialogueUI(false);
+        if (reset) // Reset to start of Dialogue data
+        {
+            dialogueLines = dialogueData.dialogueLines;
+            reset = false;
+        }
     }
-
 }

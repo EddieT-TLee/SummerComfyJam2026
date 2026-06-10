@@ -15,8 +15,13 @@ MonoBehaviour:
   npcName: Test
   npcPortrait: {fileID: -3049322125240120499, guid: 3493164417e224c7c837f8356ae54bc1, type: 3}
   dialogueLines:
-  - oi bruv
-  - fuck off
-  - Char Limit test AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  - text: oi bruv
+    choices: []
+  - text: fuck off
+    choices: []
+  - text: Char limit Test Char limit TestChar limit TestChar limit TestChar limit
+      TestChar limit TestChar limit TestChar limit TestChar limit TestChar limit
+      TestChar limit TestChar limit TestChar limit TestChar limit TestChar limit
+      TestChar limit Test
+    choices: []
   typingSpeed: 0.05
-  dialogueChoices: []

@@ -1,25 +1,33 @@
 using System;
 using UnityEngine;
+
+
 /// <summary>
-/// I feel like this is very self-explanatory
-/// If you really don't understand contact me
+/// Everything should be self-explanatory
+/// If you don't understand anything idk contact me
 /// </summary>
 [CreateAssetMenu(fileName = "NPCDialogue", menuName = "Scriptable Objects/NPCDialogue")]
 public class NPCDialogue : ScriptableObject
 {
-    public String npcName;
+    public string npcName;
     public Sprite npcPortrait;
-    public string[] dialogueLines;
+    public DialogueLine[] dialogueLines;
     public float typingSpeed = 0.05f;
-   
-    
-    public DialogueChoice[] dialogueChoices;
 }
 
-[System.Serializable]
-public class DialogueChoice
+[Serializable]
+public struct DialogueLine
 {
-    public int DialogueIndex;
-    public String choice;
-    public String[] choiceLines;
+    [TextArea] public string text;
+    public DialogueChoice[] choices; // if empty then there are no choices for line
+}
+
+[Serializable]
+public struct DialogueChoice
+{
+    // If a choice needs to return back to the start (ex. player refused to take quest go back to start of dialogue tree)
+    public bool resetDialogue; 
+    public string choiceText;
+    [TextArea] public string[] choiceLines;
+    
 }
