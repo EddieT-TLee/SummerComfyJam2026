@@ -25,7 +25,7 @@ public class DialogueController : MonoBehaviour
 
     public void SetNPCInfo(string npcName, Sprite npcPortrait)
     {
-        dialogueText.text = npcName;
+        nameText.text = npcName;
         portraitImage.sprite = npcPortrait;
     }
 

@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: TestDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Test
-  npcPortrait: {fileID: -3049322125240120499, guid: 3493164417e224c7c837f8356ae54bc1, type: 3}
+  npcPortraitSprites:
+  - {fileID: -3049322125240120499, guid: 3493164417e224c7c837f8356ae54bc1, type: 3}
   dialogueLines:
   - text: oi bruv
+    portraitIndex: 0
+    choices: []
+  - text: you shouldn't be seeing this change the NPC Dialogue
+    portraitIndex: 0
     choices: []
   - text: fuck off
-    choices: []
-  - text: Char limit Test Char limit TestChar limit TestChar limit TestChar limit
-      TestChar limit TestChar limit TestChar limit TestChar limit TestChar limit
-      TestChar limit TestChar limit TestChar limit TestChar limit TestChar limit
-      TestChar limit Test
+    portraitIndex: 0
     choices: []
   typingSpeed: 0.05

@@ -13,17 +13,24 @@ MonoBehaviour:
   m_Name: ChoiceTestDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Test but with choice
-  npcPortrait: {fileID: -3049322125240120499, guid: 3493164417e224c7c837f8356ae54bc1, type: 3}
+  npcPortraitSprites:
+  - {fileID: 7552876770594578384, guid: 0119d0777daad46f89cb283b53fa1a16, type: 3}
   dialogueLines:
   - text: oi bruv
+    portraitIndex: 0
     choices: []
   - text: can ya help
+    portraitIndex: 0
     choices:
-    - choiceText: ye
+    - resetDialogue: 0
+      choiceText: ye
+      portraitIndex: 0
       choiceLines:
       - yipee
       - type shit!
-    - choiceText: nah
+    - resetDialogue: 1
+      choiceText: nah
+      portraitIndex: 0
       choiceLines:
       - fuck you
       - loser

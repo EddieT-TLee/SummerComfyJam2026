@@ -14,12 +14,16 @@ public class NPC : MonoBehaviour, IInteractable
     private DialogueLine[] dialogueLines;
     private bool isTyping, isDialogueActive, hasChoice;
     private bool reset;
+    private Sprite currentPortrait;
+    private Sprite[]  portraits;
 
 
     private void Start()
     {
         dialogueUI = DialogueController.instance;
         dialogueLines = dialogueData.dialogueLines;
+        portraits = dialogueData.npcPortraitSprites;
+        
         dialogueIndex = 0;
         reset = false;
     }
@@ -45,9 +49,10 @@ public class NPC : MonoBehaviour, IInteractable
     void StartDialogue()
     {
         isDialogueActive = true;
-        dialogueIndex = 0;
-
-        dialogueUI.SetNPCInfo(dialogueData.npcName, dialogueData.npcPortrait);
+        dialogueIndex = 0; 
+        currentPortrait = portraits[dialogueLines[dialogueIndex].portraitIndex];
+        
+        dialogueUI.SetNPCInfo(dialogueData.npcName, currentPortrait);
         dialogueUI.ShowDialogueUI(true);
         DisplayCurrentLine();
     }
