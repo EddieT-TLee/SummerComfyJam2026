@@ -5,16 +5,24 @@ public class SceneChanger : MonoBehaviour
 {
     public string sceneToLoad;
     public Vector2 newPosition;
-    private Transform player;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            player = collision.transform;
+            SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.LoadScene(sceneToLoad);
-            player.position = newPosition;
-            
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            playerObj.transform.position = newPosition;
         }
     }
 }

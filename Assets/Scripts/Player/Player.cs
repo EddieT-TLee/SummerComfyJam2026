@@ -7,20 +7,30 @@ public class Player : MonoBehaviour
 {
     
     public float moveSpeed = 5f; // Move speed of player
-    public Camera playerCamera; // Camera from Scene
+    
     public InputActionAsset actionAsset; // Input actions of player
 
     private InputAction moveAction;
     private Rigidbody2D rb; // Players rigidbody used for movement
+    private Camera playerCamera; // Camera from Scene
     [SerializeField]
     private GameObject DialoguePanel; // Im Lazy to code up where to find this
     
 
     void Awake()
     {
+        if (FindObjectsByType<Player>(FindObjectsSortMode.None).Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         InputActionMap playerMap = actionAsset.FindActionMap("Player");
         moveAction = playerMap.FindAction("Move");
         rb = GetComponent<Rigidbody2D>();
+        
+        if(DialoguePanel == null) DialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel");
+        playerCamera = Camera.main;
     }
     void FixedUpdate()
     {
@@ -35,25 +45,30 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
     }
     
-    void LateUpdate() // Stops the Camera from lagging behind player movement
+    void LateUpdate()
     {
-     
-        playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10); 
+        playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
     
     
     // Input action stuff
     private void OnEnable()
     {
-        Debug.Log("Enabled");
         moveAction.Enable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
        
     }
 
     private void OnDisable()
     {
-        Debug.Log("Disabled");
+        if (moveAction == null) return; 
         moveAction.Disable();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        playerCamera = Camera.main;
     }
     
     
