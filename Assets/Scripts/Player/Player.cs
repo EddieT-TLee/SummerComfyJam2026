@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -36,23 +37,25 @@ public class Player : MonoBehaviour
     
     void LateUpdate() // Stops the Camera from lagging behind player movement
     {
-        // If a scene is bigger it will have a camera that follows
-        // If it's a scene like a room it has a fixed camera
-        if(playerCamera.CompareTag("Follow"))
-            playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10); 
+     
+        playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10); 
     }
     
     
     // Input action stuff
     private void OnEnable()
     {
+        Debug.Log("Enabled");
         moveAction.Enable();
+       
     }
 
     private void OnDisable()
     {
+        Debug.Log("Disabled");
         moveAction.Disable();
     }
+    
     
 }
 
