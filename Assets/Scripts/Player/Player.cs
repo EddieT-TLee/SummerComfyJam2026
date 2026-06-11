@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        if (FindObjectsByType<Player>(FindObjectsSortMode.None).Length > 1)
+        if (FindObjectsByType<Player>(FindObjectsInactive.Exclude).Length > 1)
         {
             Destroy(gameObject);
             return;
