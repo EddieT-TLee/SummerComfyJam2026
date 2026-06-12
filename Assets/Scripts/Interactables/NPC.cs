@@ -148,7 +148,18 @@ public class NPC : MonoBehaviour, IInteractable
             currentTalkingAnim = direction.y < 0 ? "Talking_front" : "Talking_back";
         }
         
-        animator.Play(currentTalkingAnim);
+        // Default to idle if Npc doesn't have talking animation 
+        int stateHash = Animator.StringToHash(currentTalkingAnim);
+    
+        if (animator.HasState(0, stateHash))
+        {
+            animator.Play(currentTalkingAnim);
+        }
+        else
+        {
+            animator.Play("Idle");
+        }
+        
     }
 
     void DisplayCurrentLine()
