@@ -16,6 +16,8 @@ public class NPC : MonoBehaviour, IInteractable
     private bool reset;
     private Sprite currentPortrait;
     private Sprite[]  portraits;
+    private Animator animator;
+    private string currentTalkingAnim;
 
 
     private void Start()
@@ -23,9 +25,9 @@ public class NPC : MonoBehaviour, IInteractable
         dialogueUI = DialogueController.instance;
         dialogueLines = dialogueData.dialogueLines;
         portraits = dialogueData.npcPortraitSprites;
-        
         dialogueIndex = 0;
         reset = false;
+        animator = GetComponent<Animator>();
     }
 
     public bool CanInteract()
@@ -54,6 +56,7 @@ public class NPC : MonoBehaviour, IInteractable
         
         dialogueUI.SetNPCInfo(dialogueData.npcName, currentPortrait);
         dialogueUI.ShowDialogueUI(true);
+        FacePlayer();
         DisplayCurrentLine();
     }
 
@@ -114,6 +117,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     void ChooseOption(DialogueChoice choice)
     {
+        currentPortrait = portraits[choice.portraitIndex];
+        dialogueUI.SetNPCInfo(dialogueData.npcName, currentPortrait);
         dialogueUI.ClearChoices();
         // Convert the array of choice lines into dialogue lines
         dialogueLines = Array.ConvertAll(choice.choiceLines,
@@ -125,6 +130,25 @@ public class NPC : MonoBehaviour, IInteractable
         }
         dialogueIndex = 0;
         DisplayCurrentLine();
+    }
+
+    void FacePlayer()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        
+        Vector2 direction =  player.transform.position - transform.position;
+
+        // Based on the X and Y compoenent of the direction vector determines which direction the player is
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            currentTalkingAnim = direction.x > 0 ? "Talking_right" : "Talking_left";
+        }
+        else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
+        {
+            currentTalkingAnim = direction.y < 0 ? "Talking_front" : "Talking_back";
+        }
+        
+        animator.Play(currentTalkingAnim);
     }
 
     void DisplayCurrentLine()
@@ -144,5 +168,8 @@ public class NPC : MonoBehaviour, IInteractable
             dialogueLines = dialogueData.dialogueLines;
             reset = false;
         }
+        
+        if (animator != null)
+            animator.Play("Idle");
     }
 }

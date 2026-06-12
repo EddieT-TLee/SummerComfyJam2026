@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Test
   npcPortraitSprites:
-  - {fileID: -3049322125240120499, guid: 3493164417e224c7c837f8356ae54bc1, type: 3}
+  - {fileID: -2459561429304158236, guid: 22d22eefc06e1492b9b2f0fbfc960113, type: 3}
   dialogueLines:
   - text: oi bruv
     portraitIndex: 0
