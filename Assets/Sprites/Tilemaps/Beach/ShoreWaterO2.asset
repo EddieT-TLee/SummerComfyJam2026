@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: ShoreWater
+  m_Name: ShoreWaterO2
   m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
   m_AnimatedSprites:
-  - {fileID: 753144868, guid: 6e772d3b72cfd4ce9a39f185d3d824fe, type: 3}
-  - {fileID: -156194139, guid: 6e772d3b72cfd4ce9a39f185d3d824fe, type: 3}
-  - {fileID: -1871185736, guid: 6e772d3b72cfd4ce9a39f185d3d824fe, type: 3}
-  - {fileID: -722597669, guid: 6e772d3b72cfd4ce9a39f185d3d824fe, type: 3}
+  - {fileID: 1974294589, guid: 6e772d3b72cfd4ce9a39f185d3d824fe, type: 3}
+  - {fileID: 1029169, guid: 6e772d3b72cfd4ce9a39f185d3d824fe, type: 3}
+  - {fileID: -538938888, guid: 6e772d3b72cfd4ce9a39f185d3d824fe, type: 3}
+  - {fileID: -679041761, guid: 6e772d3b72cfd4ce9a39f185d3d824fe, type: 3}
   m_MinSpeed: 3
   m_MaxSpeed: 3
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
-  m_TileColliderType: 1
+  m_TileColliderType: 0
   m_TileAnimationFlags: 0
