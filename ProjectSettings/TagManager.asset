@@ -48,11 +48,11 @@ TagManager:
   - name: Ground
     uniqueID: 4124063649
     locked: 0
-  - name: Collision
-    uniqueID: 2970485493
-    locked: 0
   - name: WalkInfront
     uniqueID: 41542667
+    locked: 0
+  - name: Collision
+    uniqueID: 2970485493
     locked: 0
   - name: Player
     uniqueID: 3345931843
