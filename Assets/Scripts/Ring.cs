@@ -11,6 +11,64 @@ public class Ring : MonoBehaviour
     private float _minDistance;
     private float _maxDistance;
 
+    /**
+     *  
+     *  isMouseDown = false
+     *  mousePosition
+     *  
+     *  isMouseClicked = false
+     *  
+     *  if (isMouseDown == true) {
+     *      if (isMouseClicked == true) {
+     *          return
+     *      } else {
+     *          start = mousePosition
+     *          isMouseClicked = true
+     *      }
+     *  } else {
+     *      if (isMouseClicked == true) {
+     *          isMouseClicked = false
+     *          end = mousePosition
+     *          
+     *          diff = end - start
+     *          
+     *          if (diff >= _minDistance and diff <= _maxDistance) {
+     *              Shoot(diff)
+     *          }
+     *      }
+     *  }
+     *  
+     *  
+     *  
+     *  /
+
+    /** 
+     * isMouseDown = false
+     * mousePosition
+     * 
+     * 
+     * 
+     * def DragDistance():
+     * 
+     * start = 0
+     * end  = 0
+     * dif = 0
+     * 
+     * if isMouseDown == true:
+     *      start = mousePosition;
+     *      
+     *      else:
+     *      isMouseDown == false:
+     *          start != mousePosition 
+     *      
+     * if end > 0:
+     *      dif = start - end;
+     *      
+     * 
+     */
+
+    // To get the distance of a drag, you would first determine it's starting "drag location" and look at the "end drag location" and once you have both numbers, you would 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
