@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,7 @@ public class WhackAMoleManager : MonoBehaviour
     [SerializeField]
     private GameObject mole;
     private Collider2D moleCollider;
+    private GameObject moleMask;
 
     [SerializeField]
     private GameObject scoreText;
@@ -52,6 +54,7 @@ public class WhackAMoleManager : MonoBehaviour
     private void Start()
     {
         moleCollider = mole.GetComponent<Collider2D>();
+        moleMask = mole.transform.GetChild(0).gameObject;
         
         scoreTextMesh = scoreText.GetComponent<TextMeshProUGUI>();
         timeTextMesh = timeText.GetComponent<TextMeshProUGUI>();
@@ -104,6 +107,12 @@ public class WhackAMoleManager : MonoBehaviour
             }
 
             mole.transform.position = holeToAppear.position + new Vector3(0, -timeVisible * (timeVisible - VISIBLE_TIME) * MOLE_JUMP_HEIGHT, 0);
+            moleMask.transform.localScale = new Vector3(
+                1,
+                holeToAppear.transform.position.y - (mole.transform.position.y - moleCollider.bounds.size.y/2),
+                1
+            );
+            moleMask.transform.position = (mole.transform.position - new Vector3(0, moleCollider.bounds.size.y / 2, 0) + holeToAppear.transform.position) / 2;
         }
 
         // Check if player hit the mole
