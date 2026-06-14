@@ -135,6 +135,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &163749600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163749601}
+  - component: {fileID: 163749602}
+  m_Layer: 0
+  m_Name: QuestController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &163749601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163749600}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.9627, y: 0.9587598, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1697529553}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &163749602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163749600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9107d733e5bbb944d9fb635050e49594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestController
+  inactiveQuests:
+  - name: Find Mom
+    onStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1482474371}
+          m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+          m_MethodName: ChangeNPCDialogue
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: b06631022c26ede4ea032027ba91ab77, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NPCDialogue, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1482474371}
+          m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+          m_MethodName: ChangeNPCDialogue
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 8b2dc54cb5a7b0c41a12f636a1bbb7a4, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NPCDialogue, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  activeQuests: []
+  completedQuests: []
 --- !u!114 &248863433 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5356983985593434695, guid: 5a0b867e91ace1f4fa860c57adb0e76d, type: 3}
@@ -681,6 +759,14 @@ PrefabInstance:
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: 9307890e7151a4800abb5b13fe8fc71a, type: 2}
+    - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
+      propertyPath: quests.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
+      propertyPath: quests.Array.data[0].name
+      value: Find Mom
+      objectReference: {fileID: 0}
     - target: {fileID: 512704639921393801, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
       propertyPath: m_Name
       value: ChoiceNPC
@@ -815,6 +901,17 @@ Transform:
   - {fileID: 2068528430}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1482474371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
+  m_PrefabInstance: {fileID: 1210748896}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d2bb3798e924f0c9e98cb74ddef9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1654889059
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +1063,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 163749601}
   - {fileID: 1219964451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

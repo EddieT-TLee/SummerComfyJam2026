@@ -10,28 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
-  m_Name: ChoiceTestDialogue
+  m_Name: QuestCompleteTestDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  npcName: Test but with choice
-  npcPortraitSprites:
-  - {fileID: -2459561429304158236, guid: 22d22eefc06e1492b9b2f0fbfc960113, type: 3}
+  npcName: 
+  npcPortraitSprites: []
   dialogueLines:
-  - text: oi bruv
+  - text: there's me mum!
     portraitIndex: 0
     choices: []
-  - text: can ya help
-    portraitIndex: 0
-    choices:
-    - resetDialogue: 0
-      choiceText: ye
-      portraitIndex: 0
-      choiceLines:
-      - yipee
-      - type shit!
-    - resetDialogue: 1
-      choiceText: nah
-      portraitIndex: 0
-      choiceLines:
-      - fuck you
-      - loser
   typingSpeed: 0.05
