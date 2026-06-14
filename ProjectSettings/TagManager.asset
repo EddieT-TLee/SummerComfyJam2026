@@ -8,6 +8,7 @@ TagManager:
   - Follow
   - Fixed
   - DialoguePanel
+  - Confiner
   layers:
   - Default
   - TransparentFX

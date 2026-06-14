@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     private InputAction moveAction;
     private Rigidbody2D rb; // Players rigidbody used for movement
-    private Camera playerCamera; // Camera from Scene
+    // private Camera playerCamera; // Camera from Scene
     [SerializeField]
     private GameObject DialoguePanel; // Im Lazy to code up where to find this
     
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         
         if(DialoguePanel == null) DialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel");
-        playerCamera = Camera.main;
+        //playerCamera = Camera.main;
     }
     void FixedUpdate()
     {
@@ -45,17 +45,17 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(input.x * moveSpeed, input.y * moveSpeed);
     }
     
-    void LateUpdate()
-    {
-        playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-    }
+    // void LateUpdate()
+    // {
+    //     playerCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+    // }
     
     
     // Input action stuff
     private void OnEnable()
     {
         moveAction.Enable();
-        SceneManager.sceneLoaded += OnSceneLoaded;
+       // SceneManager.sceneLoaded += OnSceneLoaded;
        
     }
 
@@ -63,13 +63,13 @@ public class Player : MonoBehaviour
     {
         if (moveAction == null) return; 
         moveAction.Disable();
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+       // SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        playerCamera = Camera.main;
-    }
+    // private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    // {
+    //     playerCamera = Camera.main;
+    // }
     
     
 }
