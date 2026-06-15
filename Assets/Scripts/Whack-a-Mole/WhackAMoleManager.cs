@@ -25,11 +25,11 @@ public class WhackAMoleManager : MonoBehaviour
 
     [SerializeField]
     private GameObject scoreText;
-    private TextMeshProUGUI scoreTextMesh;
+    private TMP_Text scoreTextMesh;
 
     [SerializeField]
     private GameObject timeText;
-    private TextMeshProUGUI timeTextMesh;
+    private TMP_Text timeTextMesh;
 
     private Camera cam;
     private Mouse mouse;
@@ -67,8 +67,8 @@ public class WhackAMoleManager : MonoBehaviour
             moles.Add(m);
         }
         
-        scoreTextMesh = scoreText.GetComponent<TextMeshProUGUI>();
-        timeTextMesh = timeText.GetComponent<TextMeshProUGUI>();
+        scoreTextMesh = scoreText.GetComponent<TMP_Text>();
+        timeTextMesh = timeText.GetComponent<TMP_Text>();
 
         UpdateScore(0);
         UpdateTime(TIME_LIMIT);
@@ -168,12 +168,14 @@ public class WhackAMoleManager : MonoBehaviour
     private void UpdateScore(int newScore)
     {
         score = newScore;
-        scoreTextMesh.SetText("SCORE: " + score.ToString());
+        scoreTextMesh.SetText(score.ToString());
     }
 
     private void UpdateTime(float newTime)
     {
         totalTimeRemaining = newTime;
-        timeTextMesh.SetText("TIME REMAINING: " + totalTimeRemaining.ToString());
+        int minutes = Mathf.FloorToInt(totalTimeRemaining / 60f);
+        int seconds = Mathf.FloorToInt(totalTimeRemaining % 60f);
+        timeTextMesh.SetText(string.Format("{0:00}:{1:00}", minutes, seconds));
     }
 }
