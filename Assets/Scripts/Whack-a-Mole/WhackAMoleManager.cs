@@ -1,29 +1,35 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WhackAMoleManager : MonoBehaviour
 {
+    // Singleton
+    public static WhackAMoleManager instance { get; private set; }
+
     [SerializeField]
     private GameObject holesParent;
-    private List<Transform> holes;
-    
+    private List<GameObject> holes;
+    private List<bool> holeAvailability;
+    private readonly object _holeLock = new object();
+
     [SerializeField]
-    private GameObject mole;
-    private Collider2D moleCollider;
-    private GameObject moleMask;
+    private Mole molePrefab;
+    private string moleTag;
+    [SerializeField]
+    private int moleCount;
+
+    private List<Mole> moles;
 
     [SerializeField]
     private GameObject scoreText;
     private TextMeshProUGUI scoreTextMesh;
+
     [SerializeField]
     private GameObject timeText;
     private TextMeshProUGUI timeTextMesh;
-
-    private Transform holeToAppear;
 
     private Camera cam;
     private Mouse mouse;
@@ -33,28 +39,33 @@ public class WhackAMoleManager : MonoBehaviour
     private const int SCORE_PER_MISS = 100;
     private const int GOAL_SCORE = 1000;
 
-    private float totalTimeRemaining = 0f;
-    private float timeVisible = 0f;
-    private float timeTillAppearance;
-
-    private bool isVisible;
-
+    public float totalTimeRemaining = 0f;
     private const float TIME_LIMIT = 30f;
-    private const float MIN_WAIT_TIME = 0.4f;
-    private const float MAX_WAIT_TIME = 1.2f;
-    private const float VISIBLE_TIME = 0.5f;
 
-    private const float MOLE_JUMP_HEIGHT = 3f;
+    private bool gameFinished = false;
+
 
     private void Awake()
     {
+        // Setup singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         cam = Camera.main;
     }
 
     private void Start()
     {
-        moleCollider = mole.GetComponent<Collider2D>();
-        moleMask = mole.transform.GetChild(0).gameObject;
+        moleTag = molePrefab.tag;
+        moles = new List<Mole>();
+
+        for (int i = 0; i < moleCount; i++)
+        {
+            Mole m = Instantiate(molePrefab);
+            moles.Add(m);
+        }
         
         scoreTextMesh = scoreText.GetComponent<TextMeshProUGUI>();
         timeTextMesh = timeText.GetComponent<TextMeshProUGUI>();
@@ -62,58 +73,33 @@ public class WhackAMoleManager : MonoBehaviour
         UpdateScore(0);
         UpdateTime(TIME_LIMIT);
 
-        holes = new List<Transform>();
+        holes = new List<GameObject>();
 
         foreach (Transform hole in holesParent.transform)
         {
-            holes.Add(hole);
+            holes.Add(hole.gameObject);
         }
 
-        mole.SetActive(false);
-        isVisible = false;
-        ChooseNewHole();
+        holeAvailability = new List<bool>(Enumerable.Repeat(true, holes.Count));
     }
 
     private void Update()
     {
+        if (gameFinished) return;
+
         UpdateTime(totalTimeRemaining - Time.deltaTime);
 
         // Reached time limit, stop minigame
         if (totalTimeRemaining <= 0)
         {
-            UpdateTime(0);
-        };
-        
-        timeTillAppearance -= Time.deltaTime;
-
-        // Mole should appear, make mole visible and begin jumping from hole
-        if (timeTillAppearance <= 0 && !isVisible)
-        {
-            mole.SetActive(true);
-            isVisible = true;
-        }
-
-        // Move the mole so it jumps from the hole and back
-        if (isVisible)
-        {
-            timeVisible += Time.deltaTime;
-            if (timeVisible >= VISIBLE_TIME)
+            foreach(Mole mole in moles)
             {
-                mole.SetActive(false);
-                isVisible = false;
-                timeVisible = 0f;
-                ChooseNewHole();
-                return;
+                mole.gameObject.SetActive(false);
             }
 
-            mole.transform.position = holeToAppear.position + new Vector3(0, -timeVisible * (timeVisible - VISIBLE_TIME) * MOLE_JUMP_HEIGHT, 0);
-            moleMask.transform.localScale = new Vector3(
-                1,
-                holeToAppear.transform.position.y - (mole.transform.position.y - moleCollider.bounds.size.y/2),
-                1
-            );
-            moleMask.transform.position = (mole.transform.position - new Vector3(0, moleCollider.bounds.size.y / 2, 0) + holeToAppear.transform.position) / 2;
-        }
+            UpdateTime(0);
+            gameFinished = true;
+        };
 
         // Check if player hit the mole
         mouse = Mouse.current;
@@ -123,7 +109,8 @@ public class WhackAMoleManager : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(mouse.position.ReadValue());
 
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
-            if (hit.collider && hit.collider == moleCollider)
+            
+            if (hit.collider && hit.collider.CompareTag(moleTag))
             {
                 Debug.Log("HIT");
                 OnMoleHit();
@@ -136,19 +123,44 @@ public class WhackAMoleManager : MonoBehaviour
         }
     }
 
-    private void ChooseNewHole()
+    public GameObject GetRandomHole()
     {
-        int index = Random.Range(0, holes.Count);
-        holeToAppear = holes[index];
-        timeTillAppearance = Random.Range(MIN_WAIT_TIME, MAX_WAIT_TIME);
+        lock (_holeLock)
+        {
+            List<GameObject> holeBag = new List<GameObject>();
+
+            for (int i = 0; i < holes.Count; i++)
+            {
+                if (holeAvailability[i])
+                {
+                    holeBag.Add(holes[i]);
+                }
+            }
+
+            if (holeBag.Count == 0) return null;
+
+            int index = Random.Range(0, holeBag.Count);
+            holeAvailability[index] = false;
+
+            return holeBag[index];
+        }
     }
 
-    private void OnMoleHit()
+    public void MarkHoleAvailable(GameObject hole)
+    {
+        int index = holes.IndexOf(hole);
+        if (index != -1)
+        {
+            holeAvailability[index] = true;
+        }
+    }
+
+    public void OnMoleHit()
     {
         UpdateScore(score + SCORE_PER_HIT);
     }
 
-    private void OnMoleMiss()
+    public void OnMoleMiss()
     {
         UpdateScore(score - SCORE_PER_MISS);
     }
