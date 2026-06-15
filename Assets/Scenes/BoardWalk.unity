@@ -1105,7 +1105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6146033774711409051, guid: 517acb0a726924838a8215e5e32ab7c9, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6146033774711409051, guid: 517acb0a726924838a8215e5e32ab7c9, type: 3}
       propertyPath: DialoguePanel
