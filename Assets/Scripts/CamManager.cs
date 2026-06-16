@@ -19,7 +19,8 @@ public class CamManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Camera cam = Camera.main;
+        if (Camera.main) return; 
+        Camera cam = GameObject.FindGameObjectWithTag("PlayerCam").GetComponent<Camera>();
         // Add cinemachine brain to main cam if it is an overworld camera
         if(cam != null){
             if (!cam.TryGetComponent<CinemachineBrain>(out CinemachineBrain brain))

@@ -5,11 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Interactable
-  - Follow
-  - Fixed
   - DialoguePanel
   - Confiner
   - UI
+  - PlayerCam
   layers:
   - Default
   - TransparentFX
