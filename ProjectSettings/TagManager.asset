@@ -9,6 +9,7 @@ TagManager:
   - Fixed
   - DialoguePanel
   - Confiner
+  - UI
   layers:
   - Default
   - TransparentFX

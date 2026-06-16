@@ -51,6 +51,7 @@ public class NPC : MonoBehaviour, IInteractable
     void StartDialogue()
     {
         isDialogueActive = true;
+        PauseManager.IsPaused = isDialogueActive;
         dialogueIndex = 0; 
         currentPortrait = portraits[dialogueLines[dialogueIndex].portraitIndex];
         
@@ -172,6 +173,7 @@ public class NPC : MonoBehaviour, IInteractable
     {
         StopAllCoroutines();
         isDialogueActive = false;
+        PauseManager.IsPaused = isDialogueActive;
         dialogueUI.SetDialogueText("");
         dialogueUI.ShowDialogueUI(false);
         if (reset) // Reset to start of Dialogue data

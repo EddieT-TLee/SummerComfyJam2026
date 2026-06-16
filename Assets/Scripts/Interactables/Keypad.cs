@@ -66,7 +66,7 @@ public class Keypad : MonoBehaviour, IInteractable
     public TMP_Text displayText;
     public Button[] numberButtons;
     public Button enterButton;
-    
+
     private bool isKeypadActive;
     private string currentCombination;
     private int correctAttempts;
@@ -78,9 +78,11 @@ public class Keypad : MonoBehaviour, IInteractable
         {
             btn.onClick.AddListener(() => OnNumberPressed(btn));
         }
+
         enterButton.onClick.AddListener(() => OnEnterPressed());
         displayText.text = "";
     }
+
     public bool CanInteract()
     {
         return !isKeypadActive;
@@ -88,13 +90,16 @@ public class Keypad : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-       keypad.SetActive(true);
+        isKeypadActive = true;
+        PauseManager.IsPaused = isKeypadActive;
+        keypad.SetActive(true);
     }
 
     public void CloseKeypad()
     {
         isKeypadActive = false;
         currentCombination = "";
+        PauseManager.IsPaused = isKeypadActive;
         keypad.SetActive(false);
     }
 
@@ -106,7 +111,7 @@ public class Keypad : MonoBehaviour, IInteractable
             currentCombination += btn.name;
         }
     }
-    
+
     void OnEnterPressed()
     {
         if (currentCombination == "0000" && correctAttempts < 6)
@@ -125,8 +130,8 @@ public class Keypad : MonoBehaviour, IInteractable
             StartCoroutine(ClearScreen());
         }
     }
-    
-    IEnumerator ClearScreen() 
+
+    IEnumerator ClearScreen()
     {
         yield return new WaitForSeconds(0.7f);
         displayText.text = "";
