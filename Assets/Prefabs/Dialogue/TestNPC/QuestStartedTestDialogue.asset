@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: QuestStartedTestDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: 
-  npcPortraitSprites: []
+  npcPortraitSprites:
+  - {fileID: -2459561429304158236, guid: 22d22eefc06e1492b9b2f0fbfc960113, type: 3}
   dialogueLines:
   - text: where me my mum?
     portraitIndex: 0
