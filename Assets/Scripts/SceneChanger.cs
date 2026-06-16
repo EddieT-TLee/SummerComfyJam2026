@@ -22,7 +22,7 @@ public class SceneChanger : MonoBehaviour
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
-            playerObj.transform.position = newPosition;
+            playerObj.transform.position = new Vector3(newPosition.x, newPosition.y, playerObj.transform.position.z);
         }
     }
 }
