@@ -115,6 +115,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialoguePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 271731021223513384, guid: 5092d467745a04fd3a545a0138fe2a8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541297900821189750, guid: 5092d467745a04fd3a545a0138fe2a8c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 341.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 541297900821189750, guid: 5092d467745a04fd3a545a0138fe2a8c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227014221898414931, guid: 5092d467745a04fd3a545a0138fe2a8c, type: 3}
+      propertyPath: m_Spacing
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2215000924115290110, guid: 5092d467745a04fd3a545a0138fe2a8c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -145,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2215000924115290110, guid: 5092d467745a04fd3a545a0138fe2a8c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 125.2548
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 2215000924115290110, guid: 5092d467745a04fd3a545a0138fe2a8c, type: 3}
       propertyPath: m_LocalPosition.x
