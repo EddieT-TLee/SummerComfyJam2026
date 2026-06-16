@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,7 +7,6 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance; // Singleton
-   
    
     // Objects to not destroy
     public GameObject[] persistentObjects;

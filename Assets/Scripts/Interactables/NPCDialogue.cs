@@ -18,9 +18,12 @@ public class NPCDialogue : ScriptableObject
 [Serializable]
 public struct DialogueLine
 {
-    [TextArea] public string text;
+    [TextArea]
+    public string text;
+    
     [Header("Index in the portrait Sprites to use")]
     public int portraitIndex;
+    
     public DialogueChoice[] choices; // if empty then there are no choices for line
 }
 
@@ -28,10 +31,14 @@ public struct DialogueLine
 public struct DialogueChoice
 {
     // If a choice needs to return back to the start (ex. player refused to take quest go back to start of dialogue tree)
-    public bool resetDialogue; 
+    public bool resetDialogue;
+    public string questName;
     public string choiceText;
+    
     [Header("Index in the portrait Sprites to use")]
     public int portraitIndex;
-    [TextArea] public string[] choiceLines;
+    
+    [SerializeField]
+    public DialogueLine[] choiceLines;
     
 }

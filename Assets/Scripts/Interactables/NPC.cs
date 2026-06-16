@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    [Header("Dialogue ScriptableObject")] public NPCDialogue dialogueData;
+    public NPCDialogue dialogueData;
 
     private DialogueController dialogueUI;
     private int dialogueIndex;
@@ -18,6 +17,8 @@ public class NPC : MonoBehaviour, IInteractable
     private Sprite[]  portraits;
     private Animator animator;
     private string currentTalkingAnim;
+
+    private Quest quest = null;
 
 
     private void Start()
@@ -122,14 +123,17 @@ public class NPC : MonoBehaviour, IInteractable
         dialogueUI.SetNPCInfo(dialogueData.npcName, currentPortrait);
         dialogueUI.ClearChoices();
         // Convert the array of choice lines into dialogue lines
-        dialogueLines = Array.ConvertAll(choice.choiceLines,
-            choiceLine => new DialogueLine {text = choiceLine, choices = Array.Empty<DialogueChoice>()});
+        dialogueLines = choice.choiceLines;
 
         if (choice.resetDialogue)
         {
             reset = true;
         }
         dialogueIndex = 0;
+
+        // If this dialog starts a quest, start the damn quest (but after all dialogue is done)
+        quest = QuestController.instance.inactiveQuests.Find(x => x.name.Equals(choice.questName));
+
         DisplayCurrentLine();
     }
 
@@ -184,5 +188,18 @@ public class NPC : MonoBehaviour, IInteractable
         
         if (animator != null)
             animator.Play("Idle");
+
+        if (quest != null)
+        {
+            QuestController.instance.StartQuest(quest);
+        }
+    }
+
+    public void ChangeNPCDialogue(NPCDialogue npcDialogue)
+    {
+        dialogueLines = npcDialogue.dialogueLines;
+        portraits = npcDialogue.npcPortraitSprites;
+        dialogueIndex = 0;
+        reset = false;
     }
 }

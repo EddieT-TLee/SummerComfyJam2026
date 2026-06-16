@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: ChoiceTestDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Test but with choice
+  npcPortraitSprites:
+  - {fileID: -2459561429304158236, guid: 22d22eefc06e1492b9b2f0fbfc960113, type: 3}
+  dialogueLines:
+  - text: oi bruv
+    portraitIndex: 0
+    choices: []
+  - text: can ya help
+    portraitIndex: 0
+    choices:
+    - resetDialogue: 0
+      questName: Find Mom
+      choiceText: ye
+      portraitIndex: 0
+      choiceLines:
+      - text: yipee!
+        portraitIndex: 0
+        choices: []
+      - text: type shit
+        portraitIndex: 0
+        choices: []
+    - resetDialogue: 1
+      questName: 
+      choiceText: nah
+      portraitIndex: 0
+      choiceLines:
+      - text: fuck you
+        portraitIndex: 0
+        choices: []
+      - text: die
+        portraitIndex: 0
+        choices: []
+  typingSpeed: 0.05
