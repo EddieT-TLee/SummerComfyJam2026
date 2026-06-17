@@ -8,6 +8,11 @@ public class Mole : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameObject spriteMask;
 
+    [SerializeField]
+    private Sprite moleSprite;
+    [SerializeField]
+    private Sprite moleSpriteHit;
+
     private bool readyToJump = false;
     
     public bool isJumping = false;
@@ -34,6 +39,12 @@ public class Mole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hit) {
+            spriteRenderer.sprite = moleSpriteHit;
+        } else {
+            spriteRenderer.sprite = moleSprite;
+        }
+
         // Try to find a hole to jump
         if (!readyToJump && !isJumping)
         {
