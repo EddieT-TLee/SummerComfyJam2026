@@ -9,15 +9,19 @@ public class Mole : MonoBehaviour
     private GameObject spriteMask;
 
     private bool readyToJump = false;
-    private bool isJumping = false;
+    
+    public bool isJumping = false;
+    public bool hit = false;
 
-    private float timeVisible = 0f;
+    private float timeVisibleRemaining = 0f;
+    private float visibleTime = 0f;
     private float timeTillAppearance = 0f;
 
     private const float MIN_WAIT_TIME = 0.4f;
     private const float MAX_WAIT_TIME = 4.0f;
 
-    private const float VISIBLE_TIME = 0.7f;
+    private const float MIN_VISIBLE_TIME = 0.3f;
+    private const float MAX_VISIBLE_TIME = 0.7f;
 
     void Start()
     {
@@ -52,28 +56,29 @@ public class Mole : MonoBehaviour
                 readyToJump = false;
                 isJumping = true;
                 spriteRenderer.enabled = true;
-                timeVisible = VISIBLE_TIME;
+                visibleTime = Random.Range(MIN_VISIBLE_TIME, MAX_VISIBLE_TIME);
+                timeVisibleRemaining = visibleTime;
             }
         }
 
         if (isJumping)
         {
-            timeVisible -= Time.deltaTime;
-            if (timeVisible <= 0f)
+            timeVisibleRemaining -= Time.deltaTime;
+            if (timeVisibleRemaining <= 0f)
             {
                 isJumping = false;
                 WhackAMoleManager.instance.MarkHoleAvailable(holeToAppearAt);
                 holeToAppearAt = null;
                 spriteRenderer.enabled = false;
+                hit = false;
                 return;
             }
 
             float spriteHeight = spriteRenderer.bounds.size.y;
-            Debug.Log(spriteHeight);
             
             Vector3 startPosition = appearPoint.transform.position - new Vector3(0, spriteHeight/2, 0);
-            float num = -timeVisible * (timeVisible - VISIBLE_TIME);
-            float den = (VISIBLE_TIME / 2) * (VISIBLE_TIME / 2);
+            float num = -timeVisibleRemaining * (timeVisibleRemaining - visibleTime);
+            float den = (visibleTime / 2) * (visibleTime / 2);
             float offset = spriteHeight * (num / den);
 
             transform.position = startPosition + new Vector3(0, offset, 0);

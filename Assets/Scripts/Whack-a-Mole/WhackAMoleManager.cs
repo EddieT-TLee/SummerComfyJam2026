@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class WhackAMoleManager : MonoBehaviour
 {
@@ -31,18 +33,28 @@ public class WhackAMoleManager : MonoBehaviour
     private GameObject timeText;
     private TMP_Text timeTextMesh;
 
+
+    [SerializeField]
+    private GameObject instructionsScreen;
+    [SerializeField]
+    private Button startGameButton;
+
+    [SerializeField]
+    private GameObject endScreen;
+    [SerializeField]
+    private TMP_Text endScreenText;
+
     private Camera cam;
     private Mouse mouse;
 
     private int score = 0;
     private const int SCORE_PER_HIT = 100;
-    private const int SCORE_PER_MISS = 100;
     private const int GOAL_SCORE = 1000;
 
     public float totalTimeRemaining = 0f;
     private const float TIME_LIMIT = 30f;
 
-    private bool gameFinished = false;
+    private bool paused = true;
 
 
     private void Awake()
@@ -58,47 +70,24 @@ public class WhackAMoleManager : MonoBehaviour
 
     private void Start()
     {
-        moleTag = molePrefab.tag;
-        moles = new List<Mole>();
-
-        for (int i = 0; i < moleCount; i++)
-        {
-            Mole m = Instantiate(molePrefab);
-            moles.Add(m);
-        }
-        
         scoreTextMesh = scoreText.GetComponent<TMP_Text>();
         timeTextMesh = timeText.GetComponent<TMP_Text>();
-
+        startGameButton.onClick.AddListener(StartGame);
+        HideEndScreen();
         UpdateScore(0);
         UpdateTime(TIME_LIMIT);
-
-        holes = new List<GameObject>();
-
-        foreach (Transform hole in holesParent.transform)
-        {
-            holes.Add(hole.gameObject);
-        }
-
-        holeAvailability = new List<bool>(Enumerable.Repeat(true, holes.Count));
     }
 
     private void Update()
     {
-        if (gameFinished) return;
+        if (paused) return;
 
         UpdateTime(totalTimeRemaining - Time.deltaTime);
 
         // Reached time limit, stop minigame
         if (totalTimeRemaining <= 0)
         {
-            foreach(Mole mole in moles)
-            {
-                mole.gameObject.SetActive(false);
-            }
-
-            UpdateTime(0);
-            gameFinished = true;
+            MinigameFinished();
         };
 
         // Check if player hit the mole
@@ -112,47 +101,69 @@ public class WhackAMoleManager : MonoBehaviour
             
             if (hit.collider && hit.collider.CompareTag(moleTag))
             {
-                Debug.Log("HIT");
-                OnMoleHit();
-            } else
-            {
-                Debug.Log("MISS");
-                OnMoleMiss();
+                Mole mole = hit.collider.gameObject.GetComponent<Mole>();
+                if (!mole.hit && mole.isJumping)
+                {
+                    mole.hit = true;
+                    OnMoleHit();
+                }
             }
-            
         }
+    }
+
+    private void StartGame()
+    {
+        paused = false;
+        instructionsScreen.SetActive(false);
+
+        // Setup moles
+        moleTag = molePrefab.tag;
+        moles = new List<Mole>();
+
+        for (int i = 0; i < moleCount; i++)
+        {
+            Mole m = Instantiate(molePrefab);
+            moles.Add(m);
+        }
+
+        holes = new List<GameObject>();
+
+        foreach (Transform hole in holesParent.transform)
+        {
+            holes.Add(hole.gameObject);
+        }
+
+        holeAvailability = new List<bool>(Enumerable.Repeat(true, holes.Count));
     }
 
     public GameObject GetRandomHole()
     {
         lock (_holeLock)
         {
-            List<GameObject> holeBag = new List<GameObject>();
+            List<int> availableIndices = new List<int>();
 
             for (int i = 0; i < holes.Count; i++)
             {
                 if (holeAvailability[i])
                 {
-                    holeBag.Add(holes[i]);
+                    availableIndices.Add(i);
                 }
             }
 
-            if (holeBag.Count == 0) return null;
+            if (availableIndices.Count == 0) return null;
 
-            int index = Random.Range(0, holeBag.Count);
-            holeAvailability[index] = false;
+            int index = Random.Range(0, availableIndices.Count);
+            int holeIndex = availableIndices[index];
 
-            return holeBag[index];
+            holeAvailability[holeIndex] = false;
+
+            return holes[holeIndex];
         }
     }
 
     public void MarkHoleAvailable(GameObject hole)
     {
-        int index = holes.IndexOf(hole);
-        if (index != -1)
-        {
-            holeAvailability[index] = true;
-        }
+        holeAvailability[holes.IndexOf(hole)] = true;
     }
 
     public void OnMoleHit()
@@ -160,9 +171,34 @@ public class WhackAMoleManager : MonoBehaviour
         UpdateScore(score + SCORE_PER_HIT);
     }
 
-    public void OnMoleMiss()
+    private void MinigameFinished()
     {
-        UpdateScore(score - SCORE_PER_MISS);
+        foreach (Mole mole in moles)
+        {
+            mole.gameObject.SetActive(false);
+        }
+
+        UpdateTime(0);
+        paused = true;
+
+        if (score >= GOAL_SCORE)
+        {
+            ShowEndScreen("YOU WIN!");
+        } else
+        {
+            ShowEndScreen("Our boardwalk will now run rampant with moles. I blame you");
+        }
+    }
+
+    private void ShowEndScreen(string message)
+    {
+        endScreen.SetActive(true);
+        endScreenText.text = message;
+    }
+    
+    private void HideEndScreen()
+    {
+        endScreen.SetActive(false);
     }
 
     private void UpdateScore(int newScore)
