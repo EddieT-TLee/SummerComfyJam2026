@@ -1,19 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishingManager : MonoBehaviour
 {
     [SerializeField]
     private FishingMeter fishingMeter;
+
     [SerializeField]
     private ProgressBar progressBar;
+    
+    [SerializeField]
+    private BaitCounter baitCounter;
+    
+    [SerializeField]
+    private GameObject fishCounter;
+    [SerializeField]
+    private Animator fishAnimator;
+    [SerializeField]
+    private List<Sprite> fishSprites;
 
+    [SerializeField]
+    private Button castLineButton;
+    
+    [SerializeField]
+    private GameObject endScreen;
+    [SerializeField]
+    private TMP_Text endScreenText;    
+    
     private Gradient colors;
 
     private float fishCaughtProgress = 0.5f;
     private const float CATCH_TIME = 10f;
     private const float DECAY_TIME = 15f;
 
-    private bool gameEnded = false;
+    private bool paused = false;
+
+    private int fishCaught = 0;
+    private const int FISH_GOAL = 3;
 
     private void Awake()
     {
@@ -35,9 +61,21 @@ public class FishingManager : MonoBehaviour
         );
     }
 
+    private void Start()
+    {
+        HideFishingUI();
+        ShowButtonUI();
+        HideEndScreenText();
+        ShowFishCounter();
+        HideFishDancer();
+        paused = true;
+
+        castLineButton.onClick.AddListener(CastLine);
+    }
+
     private void Update()
     {
-        if (gameEnded) return;
+        if (paused) return;
 
         if (fishingMeter.zonesOverlapping)
         {
@@ -51,27 +89,167 @@ public class FishingManager : MonoBehaviour
         if (fishCaughtProgress <= 0f)
         {
             fishCaughtProgress = 0f;
-            OnFail();
-            gameEnded = true;
+            OnFishLost();
         } else if (fishCaughtProgress >= 1f)
         {
             fishCaughtProgress = 1f;
-            OnWin();
-            gameEnded = true;
+            OnFishCaught();
         }
-
 
         progressBar.UpdateColor(colors.Evaluate(fishCaughtProgress));
         progressBar.UpdateProgress(fishCaughtProgress);
     }
 
-    private void OnFail()
+    private void CastLine()
     {
-
+        ShowFishingUI();
+        HideButtonUI();
+        baitCounter.UseBait();
+        paused = false;
     }
 
-    private void OnWin()
+    private void OnFishLost()
     {
+        if (baitCounter.bait == 0)
+        {
+            OnMinigameEnd();
+            return;
+        }
 
+        HideFishingUI();
+        ShowButtonUI();
+
+        ResetProgress();
+        fishingMeter.ResetFishingMeter();
+        paused = true;
     }
+
+    private void OnFishCaught()
+    {
+        fishCaught++;
+
+        StartCoroutine(PlayFishCaughtAnimation());
+
+        if (baitCounter.bait == 0)
+        {
+            OnMinigameEnd();
+            return;
+        }
+
+        HideFishingUI();
+        ShowButtonUI();
+
+        ResetProgress();
+        fishingMeter.ResetFishingMeter();
+        paused = true;
+    }
+
+    private IEnumerator PlayFishCaughtAnimation()
+    {
+        Sprite fish = fishSprites[Random.Range(0, fishSprites.Count)];
+
+        fishAnimator.gameObject.GetComponent<Image>().sprite = fish;
+        fishAnimator.SetTrigger("PlayAnimation");
+        ShowFishDancer();
+
+        yield return new WaitUntil(() => fishAnimator.GetCurrentAnimatorStateInfo(0).IsName("FishDance"));
+
+        yield return new WaitUntil(() => !fishAnimator.GetCurrentAnimatorStateInfo(0).IsName("FishDance"));
+
+        HideFishDancer();
+        AddFishToCounter(fish);
+
+        if (fishCaught == FISH_GOAL)
+        {
+            OnMinigameEnd();
+        }
+    }
+
+    private void AddFishToCounter(Sprite fish)
+    {
+        GameObject fishObject = new GameObject($"Fish_{fishCaught}");
+
+        fishObject.transform.SetParent(fishCounter.transform, false);
+
+        Image img = fishObject.AddComponent<Image>();
+        img.sprite = fish;
+        img.preserveAspect = true;
+    }
+
+    private void OnMinigameEnd()
+    {
+        if (fishCaught == 3)
+        {
+            endScreenText.text = "YOU WIN!";
+        } else
+        {
+            endScreenText.text = "I shall starve for one thousand nights. I must kill a child to sustain myself tonight, and the next night, and so on...";
+        }
+
+        HideButtonUI();
+        HideFishingUI();
+        ShowEndScreenText();
+        HideFishCounter();
+        paused = true;
+    }
+
+    private void ResetProgress()
+    {
+        fishCaughtProgress = 0.5f;
+        progressBar.UpdateProgress(fishCaughtProgress);
+    }
+
+    private void ShowFishingUI()
+    {
+        fishingMeter.gameObject.SetActive(true);
+        progressBar.gameObject.SetActive(true);
+    }
+
+    private void HideFishingUI()
+    {
+        fishingMeter.gameObject.SetActive(false);
+        progressBar.gameObject.SetActive(false);
+    }
+
+    private void ShowFishCounter()
+    {
+        fishCounter.SetActive(true);
+    }
+
+    private void HideFishCounter()
+    {
+        fishCounter.SetActive(false);
+    }
+
+    private void ShowFishDancer()
+    {
+        fishAnimator.gameObject.GetComponent<Image>().enabled = true;
+    }
+
+    private void HideFishDancer()
+    {
+        fishAnimator.gameObject.GetComponent<Image>().enabled = false;
+    }
+
+    private void ShowButtonUI()
+    {
+        castLineButton.gameObject.SetActive(true);
+    }
+
+    private void HideButtonUI()
+    {
+        castLineButton.gameObject.SetActive(false);
+    }
+
+    private void ShowEndScreenText()
+    {
+        endScreen.SetActive(true);
+    }
+
+    private void HideEndScreenText()
+    {
+        endScreen.SetActive(false);
+    }
+
+
 }

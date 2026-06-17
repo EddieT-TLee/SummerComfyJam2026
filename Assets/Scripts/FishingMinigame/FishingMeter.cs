@@ -2,20 +2,20 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class FishingMeter : MonoBehaviour
 {
-    private SpriteRenderer backgroundRenderer;
+    private Image backgroundImage;
 
     [SerializeField]
     private GameObject safeZone;
-    private Collider2D safeZoneCollider;
+    private RectTransform safeZoneRect;
 
     [SerializeField]
     private GameObject indicator;
-    private Collider2D indicatorCollider;
+    private RectTransform indicatorRect;
 
     private const float EPSILON = 0.001f;
 
@@ -24,19 +24,20 @@ public class FishingMeter : MonoBehaviour
     private float indicatorLowerBound;
     private float indicatorUpperBound;
 
-    private Vector3 indicatorVelocity;
-    private Vector3 gravity = new Vector3(0, -4.0f, 0);
+    private float halfPoint;
 
-    private const float FORCE = 20f;
+    private Vector2 indicatorVelocity = Vector2.zero;
+    private Vector2 gravity = new Vector3(0, -400.0f);
+
+    private const float FORCE = 800f;
     private const float BOUNCE_COEFFICIENT = 0.6f;
 
     private const float MIN_WAIT_TIME = 1f;
     private const float MAX_WAIT_TIME = 3f;
     private float timeTillMove;
 
-    [SerializeField]
-    private const float SAFE_ZONE_SPEED = 5f;
-    private Vector3 moveTo;
+    private const float SAFE_ZONE_SPEED = 500f;
+    private Vector2 moveTo;
     private bool moving = false;
 
     public bool zonesOverlapping = false;
@@ -44,22 +45,35 @@ public class FishingMeter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        backgroundRenderer = GetComponent<SpriteRenderer>();
-        safeZoneCollider = safeZone.GetComponent<Collider2D>();
-        indicatorCollider = indicator.GetComponent<Collider2D>();
+        backgroundImage = GetComponent<Image>();
+        safeZoneRect = safeZone.GetComponent<RectTransform>();
+        indicatorRect = indicator.GetComponent<RectTransform>();
 
-        float backgroundHeight = backgroundRenderer.bounds.size.y;
-        float backgroundBorderTop = backgroundRenderer.sprite.border.w / backgroundRenderer.sprite.pixelsPerUnit;
-        float backgroundBorderBottom= backgroundRenderer.sprite.border.w / backgroundRenderer.sprite.pixelsPerUnit;
-        float safeZoneHeight = safeZoneCollider.bounds.size.y;
-        float indicatorHeight = indicatorCollider.bounds.size.y;
+        Canvas.ForceUpdateCanvases();
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)transform);
 
-        indicatorLowerBound = transform.position.y - backgroundHeight/2 + backgroundBorderBottom + indicatorHeight/2;
-        indicatorUpperBound = transform.position.y + backgroundHeight/2 - backgroundBorderTop - indicatorHeight/2;
-        safeZoneLowerBound = transform.position.y - backgroundHeight/2 + backgroundBorderBottom + safeZoneHeight/2;
-        safeZoneUpperBound = transform.position.y + backgroundHeight/2 - backgroundBorderTop - safeZoneHeight/2;
+        float backgroundWidth = backgroundImage.rectTransform.rect.width;
+        float backgroundHeight = backgroundImage.rectTransform.rect.height;
+        
+        Vector4 borders = backgroundImage.sprite.border;
+        float borderPixelsPerUnit = Mathf.Max(backgroundImage.pixelsPerUnit * backgroundImage.pixelsPerUnitMultiplier, Mathf.Epsilon);
 
-        timeTillMove = Random.Range(MIN_WAIT_TIME, MAX_WAIT_TIME);
+        borders /= borderPixelsPerUnit;
+        
+        float safeZoneHeight = safeZoneRect.rect.height;
+        float indicatorHeight = indicatorRect.rect.height;
+
+        indicatorLowerBound = -backgroundHeight / 2f + borders.y + indicatorHeight / 2f;
+        indicatorUpperBound = backgroundHeight / 2f - borders.w - indicatorHeight / 2f;
+        safeZoneLowerBound = -backgroundHeight / 2f + borders.y + safeZoneHeight / 2f;
+        safeZoneUpperBound = backgroundHeight / 2f - borders.w - safeZoneHeight / 2f;
+
+        indicatorRect.sizeDelta = new Vector2(backgroundWidth - borders.x - borders.z, indicatorRect.sizeDelta.y);
+        safeZoneRect.sizeDelta = new Vector2(backgroundWidth - borders.x - borders.z, safeZoneRect.sizeDelta.y);
+
+        halfPoint = (safeZoneUpperBound + safeZoneLowerBound) / 2f;
+
+        ResetFishingMeter();
     }
 
     // Update is called once per frame
@@ -69,53 +83,27 @@ public class FishingMeter : MonoBehaviour
         {
             if (Mouse.current.leftButton.isPressed)
             {
-                indicatorVelocity += new Vector3(0, FORCE, 0) * Time.deltaTime;
+                indicatorVelocity += new Vector2(0, FORCE) * Time.deltaTime;
             }
         }
 
         indicatorVelocity += gravity * Time.deltaTime;
-        indicator.transform.position += (indicatorVelocity) * Time.deltaTime;
-        
-        if (indicator.transform.position.y <= indicatorLowerBound)
-        {
-            indicator.transform.position = new Vector3(indicator.transform.position.x, indicatorLowerBound, indicator.transform.position.z);
-            indicatorVelocity *= -BOUNCE_COEFFICIENT;
-        } else if (indicator.transform.position.y >= indicatorUpperBound)
-        {
-            indicator.transform.position = new Vector3(indicator.transform.position.x, indicatorUpperBound, indicator.transform.position.z);
-            indicatorVelocity *= -BOUNCE_COEFFICIENT;
-        }
+        indicatorRect.anchoredPosition += (indicatorVelocity) * Time.deltaTime;
+
+        CheckIndicatorCollisions();
 
         // Move the safe zone around to mess with the player
         if (timeTillMove <= 0)
         {
             if (!moving)
             {
-                float halfPoint = (safeZoneUpperBound + safeZoneLowerBound)/2f;
-                if (safeZone.transform.position.y >= halfPoint)
-                {
-                    moveTo = new Vector3
-                    (
-                        safeZone.transform.position.x,
-                        Random.Range(safeZoneLowerBound, halfPoint),
-                        safeZone.transform.position.z
-                    );
-                } else
-                {
-                    moveTo = new Vector3
-                    (
-                        safeZone.transform.position.x,
-                        Random.Range(halfPoint, safeZoneUpperBound),
-                        safeZone.transform.position.z
-                    );
-                }
-                    
+                UpdateMoveTo();
                 moving = true;
             }
 
-            safeZone.transform.position = Vector3.Lerp(safeZone.transform.position, moveTo, SAFE_ZONE_SPEED * Time.deltaTime);
-
-            if ((safeZone.transform.position - moveTo).magnitude <= EPSILON)
+            safeZoneRect.anchoredPosition = Vector2.MoveTowards(safeZoneRect.anchoredPosition, moveTo, SAFE_ZONE_SPEED * Time.deltaTime);
+            
+            if (Vector2.Distance(safeZoneRect.anchoredPosition, moveTo) <= EPSILON)
             {
                 timeTillMove = Random.Range(MIN_WAIT_TIME, MAX_WAIT_TIME);
                 moving = false;
@@ -125,13 +113,59 @@ public class FishingMeter : MonoBehaviour
             timeTillMove -= Time.deltaTime;
         }
 
-        // Check if safe zone contains the indicator
-        if (safeZoneCollider.bounds.Contains(indicatorCollider.bounds.min) && safeZoneCollider.bounds.Contains(indicatorCollider.bounds.max))
+        UpdateOverlapping();
+    }
+
+    private void CheckIndicatorCollisions()
+    {
+        if (indicatorRect.anchoredPosition.y <= indicatorLowerBound)
         {
-            zonesOverlapping = true;
-        } else
-        {
-            zonesOverlapping = false;
+            indicatorRect.anchoredPosition = new Vector2(indicatorRect.anchoredPosition.x, indicatorLowerBound);
+            indicatorVelocity.y *= -BOUNCE_COEFFICIENT;
         }
+        else if (indicatorRect.anchoredPosition.y >= indicatorUpperBound)
+        {
+            indicatorRect.anchoredPosition = new Vector2(indicatorRect.anchoredPosition.x, indicatorUpperBound);
+            indicatorVelocity.y *= -BOUNCE_COEFFICIENT;
+        }
+    }
+
+    private void UpdateMoveTo()
+    {
+        if (safeZoneRect.anchoredPosition.y >= halfPoint)
+        {
+            moveTo = new Vector2
+            (
+                safeZoneRect.anchoredPosition.x,
+                Random.Range(safeZoneLowerBound, halfPoint)
+            );
+        }
+        else
+        {
+            moveTo = new Vector2
+            (
+                safeZoneRect.anchoredPosition.x,
+                Random.Range(halfPoint, safeZoneUpperBound)
+            );
+        }
+    }
+
+    private void UpdateOverlapping()
+    {
+        float safeMin = safeZoneRect.anchoredPosition.y - safeZoneRect.rect.height / 2f;
+        float safeMax = safeZoneRect.anchoredPosition.y + safeZoneRect.rect.height / 2f;
+
+        float indicatorMin = indicatorRect.anchoredPosition.y - indicatorRect.rect.height / 2f;
+        float indicatorMax = indicatorRect.anchoredPosition.y + indicatorRect.rect.height / 2f;
+
+        zonesOverlapping = indicatorMin >= safeMin && indicatorMax <= safeMax;
+    }
+
+    public void ResetFishingMeter()
+    {
+        safeZoneRect.anchoredPosition = new Vector2(safeZoneRect.anchoredPosition.x, Random.Range(safeZoneLowerBound, safeZoneUpperBound));
+        indicatorRect.anchoredPosition = new Vector2(indicatorRect.anchoredPosition.x, 0);
+        timeTillMove = Random.Range(MIN_WAIT_TIME, MAX_WAIT_TIME);
+        moving = false;
     }
 }

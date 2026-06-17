@@ -1,61 +1,71 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
 {
-    private SpriteRenderer borderBackgroundRenderer;
-    private GameObject fill;
-    private SpriteRenderer fillRenderer;
+    private Image borderBackgroundImage;
 
-    private float borderBackgroundWidth;
-    private float borderBackgroundHeight;
+    private GameObject fill;
+    private Image fillImage;
+
+    private RectTransform borderRect;
+    private RectTransform fillRect;
 
     private float backgroundWidth;
     private float backgroundHeight;
 
     private Vector4 borders;
+
     public float progressValue = 0f;
 
     private void Start()
     {
-        borderBackgroundRenderer = GetComponent<SpriteRenderer>();
+        borderBackgroundImage = GetComponent<Image>();
+        borderRect = GetComponent<RectTransform>();
+
         fill = transform.GetChild(0).gameObject;
-        fillRenderer = fill.GetComponent<SpriteRenderer>();
+        fillImage = fill.GetComponent<Image>();
+        fillRect = fill.GetComponent<RectTransform>();
 
-        borderBackgroundWidth = borderBackgroundRenderer.bounds.size.x;
-        borderBackgroundHeight = borderBackgroundRenderer.bounds.size.y;
+        Canvas.ForceUpdateCanvases();
 
-        borders = borderBackgroundRenderer.sprite.border / borderBackgroundRenderer.sprite.pixelsPerUnit;
+        float borderWidth = borderRect.rect.width;
+        float borderHeight = borderRect.rect.height;
 
-        backgroundWidth = borderBackgroundWidth - borders.x - borders.z;
-        backgroundHeight = borderBackgroundHeight - borders.y - borders.w;
+        Vector4 backgroundBorders = borderBackgroundImage.sprite != null ? borderBackgroundImage.sprite.border : Vector4.zero;
+        float borderPixelsPerUnit = Mathf.Max(borderBackgroundImage.pixelsPerUnit * borderBackgroundImage.pixelsPerUnitMultiplier, Mathf.Epsilon);
 
-        fill.transform.localPosition = new Vector3(borders.x - borderBackgroundWidth/2, 0, fill.transform.localPosition.z);
-        fill.transform.localScale = new Vector3
-        (
-             0f,
-             fill.transform.localScale.y,
-             fill.transform.localScale.z
-        );
+        borders = backgroundBorders / borderPixelsPerUnit;
+
+        backgroundWidth = borderWidth - borders.x - borders.z;
+
+        backgroundHeight = borderHeight - borders.y - borders.w;
+
+        fillRect.anchorMin = new Vector2(0f, 0.5f);
+        fillRect.anchorMax = new Vector2(0f, 0.5f);
+        fillRect.pivot = new Vector2(0f, 0.5f);
+
+        fillRect.anchoredPosition = new Vector2(borders.x, 0f);
+
+        fillRect.sizeDelta = new Vector2(0f, backgroundHeight);
     }
 
     public void UpdateColor(Color c)
     {
-        fillRenderer.color = c;
+        fillImage.color = c;
     }
 
     public void UpdateProgress(float progress)
     {
-        progressValue = progress;
-        ResizeFillBar(progress);
+        progressValue = Mathf.Clamp01(progress);
+        ResizeFillBar(progressValue);
     }
 
     private void ResizeFillBar(float progress)
     {
-        fill.transform.localScale = new Vector3
-        (
-            progress * backgroundWidth,
-            backgroundHeight,
-            fill.transform.localScale.z
+        fillRect.sizeDelta = new Vector2(
+            backgroundWidth * progress,
+            backgroundHeight
         );
     }
 }
