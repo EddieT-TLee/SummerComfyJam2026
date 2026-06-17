@@ -25,8 +25,8 @@ public class Mole : MonoBehaviour
     private const float MIN_WAIT_TIME = 0.4f;
     private const float MAX_WAIT_TIME = 4.0f;
 
-    private const float MIN_VISIBLE_TIME = 0.3f;
-    private const float MAX_VISIBLE_TIME = 0.7f;
+    private const float MIN_VISIBLE_TIME = 0.5f;
+    private const float MAX_VISIBLE_TIME = 1.0f;
 
     void Start()
     {
