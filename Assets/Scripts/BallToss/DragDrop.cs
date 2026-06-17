@@ -1,6 +1,7 @@
- using UnityEngine;
- using UnityEngine.InputSystem;
-public class NewMonoBehaviourScript : MonoBehaviour
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class DragDrop : MonoBehaviour
 {
     public float power = 10f;
 
@@ -12,9 +13,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private Camera cam;
 
-    private Vector3 startPoint;
+    private Vector2 startPoint;
 
-    private LineRenderer lineRenderer; 
+    private LineRenderer lineRenderer;
+
+    private bool hasBeenThrown;
 
 
     void Start()
@@ -27,16 +30,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     void Update()
     {
+        if (BallGameSingleton.instance.gameWon) return;
+        if (hasBeenThrown) return;
+        
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             startPoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            startPoint.z = 0;
         }
 
         if (Mouse.current.leftButton.isPressed)
         {
-            Vector3 currentPoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            currentPoint.z = 0;
+            Vector2 currentPoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
             Vector2 dragVector = startPoint - currentPoint;
             dragVector = Vector2.ClampMagnitude(dragVector, maxDragDistance);
@@ -46,13 +50,26 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            Vector3 endPoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            endPoint.z = 0;
+            Vector2 endPoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-            Vector2 force = (startPoint - endPoint) * power;
+            Vector2 dragVector = startPoint - endPoint;
+            dragVector = Vector2.ClampMagnitude(dragVector, maxDragDistance);
+
+            Vector2 force = dragVector * power;
+
             rb.AddForce(force, ForceMode2D.Impulse);
 
             lineRenderer.enabled = false;
+            hasBeenThrown = true;
+            
+            BallGameSingleton.instance.OnBallThrown();
+        }
+
+        if (Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            transform.position = Vector3.zero;
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0;
         }
     }
 
