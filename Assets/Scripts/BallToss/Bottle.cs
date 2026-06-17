@@ -7,13 +7,10 @@ public class Bottle : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("ContainmentArea"))
-            NotifyLeft();
-    }
-
-    public void NotifyLeft()
-    {
-        if (hasLeft) return;
-        hasLeft = true;
-        BottleManager.instance.OnBottleLeft();
+        {
+            if (hasLeft) return;
+            hasLeft = true;
+            BallGameSingleton.instance.OnBottleLeft();
+        }
     }
 }

@@ -30,6 +30,7 @@ public class DragDrop : MonoBehaviour
 
     void Update()
     {
+        if (BallGameSingleton.instance.gameWon) return;
         if (hasBeenThrown) return;
         
         if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -61,7 +62,7 @@ public class DragDrop : MonoBehaviour
             lineRenderer.enabled = false;
             hasBeenThrown = true;
             
-            BallManager.instance.OnBallThrown();
+            BallGameSingleton.instance.OnBallThrown();
         }
 
         if (Mouse.current.rightButton.wasPressedThisFrame)
