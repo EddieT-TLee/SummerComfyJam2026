@@ -1,5 +1,6 @@
- using UnityEngine;
- using UnityEngine.InputSystem;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
 public class DragDrop : MonoBehaviour
 {
     public float power = 10f;
@@ -14,9 +15,11 @@ public class DragDrop : MonoBehaviour
 
     private Vector2 startPoint;
 
-    private LineRenderer lineRenderer; 
+    private LineRenderer lineRenderer;
 
-    
+    private bool hasBeenThrown;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +30,8 @@ public class DragDrop : MonoBehaviour
 
     void Update()
     {
+        if (hasBeenThrown) return;
+        
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             startPoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -45,15 +50,18 @@ public class DragDrop : MonoBehaviour
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
             Vector2 endPoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            
+
             Vector2 dragVector = startPoint - endPoint;
             dragVector = Vector2.ClampMagnitude(dragVector, maxDragDistance);
 
             Vector2 force = dragVector * power;
-            
+
             rb.AddForce(force, ForceMode2D.Impulse);
 
             lineRenderer.enabled = false;
+            hasBeenThrown = true;
+            
+            BallManager.instance.OnBallThrown();
         }
 
         if (Mouse.current.rightButton.wasPressedThisFrame)

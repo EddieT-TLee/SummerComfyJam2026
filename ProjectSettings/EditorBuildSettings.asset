@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/RingToss.unity
     guid: 5d0888512f13a87409a94be1763592d9
   - enabled: 1
-    path: Assets/Scenes/RingTossDEMO.unity
+    path: Assets/Scenes/BallToss.unity
     guid: ea3ce9514b3f14e4aae244678f010eef
   - enabled: 1
     path: Assets/Scenes/TestOfStrength.unity
