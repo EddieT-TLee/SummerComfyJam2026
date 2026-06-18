@@ -26,7 +26,6 @@ public class BallGameSingleton : MonoBehaviour
 
     private int bottlesOut;
     private GameObject currentBall;
-    private bool gameStarted  = false;
   
 
     void Awake()
@@ -49,9 +48,7 @@ public class BallGameSingleton : MonoBehaviour
     public void StartGame()
     {
         InstructionsPanel.SetActive(false);
-        gameStarted = true;
         SpawnBall();
-        
     }
     
     //Bottle Manager

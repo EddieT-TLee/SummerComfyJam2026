@@ -235,6 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a2bdca43334a847bbfb658a2ca474f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mole
+  moleSprite: {fileID: 1979481773952904761, guid: 0522c2bae0575154a9ac6083c20b39c1, type: 3}
+  moleSpriteHit: {fileID: -1908446529151814547, guid: cfa2628b431226d42866542789f08e8d, type: 3}
+  isJumping: 0
+  hit: 0
 --- !u!210 &7373854817454686116
 SortingGroup:
   m_ObjectHideFlags: 0
