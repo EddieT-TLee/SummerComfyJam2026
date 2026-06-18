@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,9 @@ public class TestOfStrength : MonoBehaviour
     public Animator hammerAnimator;
     public Animator bellAnimator;
     public TMP_Text strengthText;
+    public Transform bellPosition;
+    public Transform sliderPosition;
+    
 
     private SpriteRenderer powerBarRenderer;
     private SpriteRenderer spriteRenderer;
@@ -20,7 +24,14 @@ public class TestOfStrength : MonoBehaviour
     private float powerBarHeight;
 
     private float powerValue;
+    
+    private const float BOUNCE_COEFFICIENT = 0.6f;
 
+    // Used for strength thingie top and bottom
+    private float upperBound;
+    private float lowerBound;
+    
+  
     void Start()
     {
         powerBarRenderer = powerBar.GetComponent<SpriteRenderer>();
@@ -30,6 +41,9 @@ public class TestOfStrength : MonoBehaviour
                          new Vector3(powerBarRenderer.bounds.size.x / 2, 0, 0);
         powerBarHeight = powerBarRenderer.bounds.size.y;
         powerBarCenter = powerBar.transform.position.y;
+        
+        upperBound = bellPosition.position.y;  
+        lowerBound = sliderPosition.position.y; 
     }
 
     // Update is called once per frame
@@ -42,15 +56,13 @@ public class TestOfStrength : MonoBehaviour
 
             if (Mouse.current.leftButton.isPressed)
             {
+                
                 moving = false;
 
                 powerValue = (1 - (Mathf.Abs(powerBarCenter - transform.position.y) / (powerBarHeight / 2))) * 100;
-
-                hammerAnimator.Play("Hammer");
-                bellAnimator.Play("Ringing");
-
-                SetStrengthText(powerValue);
                 
+                SetStrengthText(powerValue);
+                hammerAnimator.Play("Hammer");
             }
         }
     }
@@ -58,34 +70,20 @@ public class TestOfStrength : MonoBehaviour
     void SetStrengthText(float power)
     {
         if (power > 90)
-        {
             strengthText.text = "WOW YOURE PRETTY STRONG";
-        }
         else if (power > 70)
-        {
             strengthText.text = "PrEtTY GOoD But COUld be BEtteR";
-        }
         else if (power > 50)
-        {
             strengthText.text = "C'MON ARE YOU EVEN TRYING";
-        }
         else if (power > 30)
-        {
             strengthText.text = "BL:EG. bet you wont know what this means";
-        }
         else if (power > 10)
-        {
             strengthText.text = "you should honest be dead";
-        }
         else if (power > 1)
-        {
             strengthText.text = "HOW???? BRO LOKWEY MIGHT BE THE WEAKEST PERSON EVER";
-        }
 
         strengthText.text += "\n Power: " + Mathf.RoundToInt(powerValue);
         strengthText.enabled = true;
     }
-    
-    
     
 }

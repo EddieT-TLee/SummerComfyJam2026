@@ -888,6 +888,8 @@ MonoBehaviour:
   hammerAnimator: {fileID: 1805729460}
   bellAnimator: {fileID: 369584627}
   strengthText: {fileID: 1015263529}
+  bellPosition: {fileID: 369584625}
+  sliderPosition: {fileID: 1197900188}
 --- !u!1 &1793753380
 GameObject:
   m_ObjectHideFlags: 0
