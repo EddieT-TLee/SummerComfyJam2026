@@ -1,3 +1,4 @@
+using System.Net.Security;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +37,7 @@ public class TestOfStrength : MonoBehaviour
             if (Mouse.current.leftButton.isPressed)
             {
                 moving = false;
+
                 powerValue = (1 - (Mathf.Abs(powerBarCenter - transform.position.y) / (powerBarHeight/2))) * 100;
 
                 Debug.Log(powerValue);
