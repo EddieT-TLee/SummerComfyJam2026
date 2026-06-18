@@ -27,6 +27,7 @@ public class NPC : MonoBehaviour, IInteractable
         dialogueIndex = 0;
         reset = false;
         animator = GetComponent<Animator>();
+        currentTalkingAnim = "Idle";
     }
 
     public bool CanInteract()
