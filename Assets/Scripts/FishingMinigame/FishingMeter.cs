@@ -158,7 +158,7 @@ public class FishingMeter : MonoBehaviour
         float indicatorMin = indicatorRect.anchoredPosition.y - indicatorRect.rect.height / 2f;
         float indicatorMax = indicatorRect.anchoredPosition.y + indicatorRect.rect.height / 2f;
 
-        zonesOverlapping = indicatorMin >= safeMin && indicatorMax <= safeMax;
+        zonesOverlapping = indicatorMax > safeMin && indicatorMin < safeMax;
     }
 
     public void ResetFishingMeter()

@@ -24,7 +24,12 @@ public class FishingManager : MonoBehaviour
 
     [SerializeField]
     private Button castLineButton;
-    
+
+    [SerializeField]
+    private GameObject instructionsScreen;
+    [SerializeField]
+    private Button startButton;
+
     [SerializeField]
     private GameObject endScreen;
     [SerializeField]
@@ -64,12 +69,14 @@ public class FishingManager : MonoBehaviour
     private void Start()
     {
         HideFishingUI();
-        ShowButtonUI();
-        HideEndScreenText();
-        ShowFishCounter();
+        HideButtonUI();
+        HideBaitCounter();
+        HideFishCounter();
         HideFishDancer();
+        HideEndScreenText();
         paused = true;
 
+        startButton.onClick.AddListener(StartGame);
         castLineButton.onClick.AddListener(CastLine);
     }
 
@@ -98,6 +105,14 @@ public class FishingManager : MonoBehaviour
 
         progressBar.UpdateColor(colors.Evaluate(fishCaughtProgress));
         progressBar.UpdateProgress(fishCaughtProgress);
+    }
+
+    private void StartGame()
+    {
+        HideInstructions();
+        ShowBaitCounter();
+        ShowFishCounter();
+        ShowButtonUI();
     }
 
     private void CastLine()
@@ -137,7 +152,6 @@ public class FishingManager : MonoBehaviour
         }
 
         HideFishingUI();
-        ShowButtonUI();
 
         ResetProgress();
         fishingMeter.ResetFishingMeter();
@@ -153,11 +167,11 @@ public class FishingManager : MonoBehaviour
         ShowFishDancer();
 
         yield return new WaitUntil(() => fishAnimator.GetCurrentAnimatorStateInfo(0).IsName("FishDance"));
-
         yield return new WaitUntil(() => !fishAnimator.GetCurrentAnimatorStateInfo(0).IsName("FishDance"));
 
         HideFishDancer();
         AddFishToCounter(fish);
+        ShowButtonUI();
 
         if (fishCaught == FISH_GOAL)
         {
@@ -173,6 +187,7 @@ public class FishingManager : MonoBehaviour
 
         Image img = fishObject.AddComponent<Image>();
         img.sprite = fish;
+        img.rectTransform.sizeDelta = new Vector2(75f, 75f);
         img.preserveAspect = true;
     }
 
@@ -189,7 +204,6 @@ public class FishingManager : MonoBehaviour
         HideButtonUI();
         HideFishingUI();
         ShowEndScreenText();
-        HideFishCounter();
         paused = true;
     }
 
@@ -211,6 +225,16 @@ public class FishingManager : MonoBehaviour
         progressBar.gameObject.SetActive(false);
     }
 
+    private void ShowBaitCounter()
+    {
+        baitCounter.gameObject.SetActive(true);
+    }
+
+    private void HideBaitCounter()
+    {
+        baitCounter.gameObject.SetActive(false);
+    }
+
     private void ShowFishCounter()
     {
         fishCounter.SetActive(true);
@@ -219,6 +243,11 @@ public class FishingManager : MonoBehaviour
     private void HideFishCounter()
     {
         fishCounter.SetActive(false);
+    }
+
+    private void HideInstructions()
+    {
+        instructionsScreen.SetActive(false);
     }
 
     private void ShowFishDancer()

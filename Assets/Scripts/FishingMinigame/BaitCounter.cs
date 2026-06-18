@@ -2,19 +2,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(HorizontalLayoutGroup))]
 public class BaitCounter : MonoBehaviour
 {
     [SerializeField]
     private GameObject baitPrefab;
 
-    public float spacing = 25f;
+    [SerializeField]
+    private float spacing = 0f;
 
     private readonly List<Image> baitImages = new List<Image>();
     public int bait = 5;
     
     private void Awake()
     {
+        ApplyLayoutSettings();
         BuildBaitImages();
+    }
+
+    private void OnValidate()
+    {
+        ApplyLayoutSettings();
     }
 
     private void BuildBaitImages()
@@ -22,7 +30,7 @@ public class BaitCounter : MonoBehaviour
         bait = Mathf.Max(0, bait);
         baitImages.Clear();
 
-        List<Image> existingImages = new List<Image>();
+        if (baitPrefab == null) return;
 
         for (int i = 0; i < bait; i++)
         {
@@ -32,21 +40,19 @@ public class BaitCounter : MonoBehaviour
             baitImages.Add(baitImage);
         }
 
-        PositionBaitImages();
+        if (transform is RectTransform rectTransform)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+        }
     }
 
-    private void PositionBaitImages()
+    private void ApplyLayoutSettings()
     {
-        if (baitImages.Count == 0) return;
+        HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
 
-        float baitWidth = baitImages[0].rectTransform.rect.width;
-        float step = baitWidth + spacing;
+        if (layoutGroup == null) return;
 
-        for (int i = 0; i < baitImages.Count; i++)
-        {
-            RectTransform rect = baitImages[i].rectTransform;
-            rect.anchoredPosition = new Vector2(step * i, rect.anchoredPosition.y);
-        }
+        layoutGroup.spacing = spacing;
     }
 
     public void UseBait()
