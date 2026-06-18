@@ -1,43 +1,10 @@
 fileFormatVersion: 2
-guid: 8efec940b7b832d41b48f8b064a4a211
+guid: 793c61fda5dc24d6da8ed902293c2825
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6990635160809316614
-    second: gumpywalk_0
-  - first:
-      213: 7406103327475108054
-    second: gumpywalk_1
-  - first:
-      213: 679331692358104685
-    second: gumpywalk_2
-  - first:
-      213: -6297522031064467004
-    second: gumpywalk_3
-  - first:
-      213: 7245288368652555534
-    second: gumpywalk_4
-  - first:
-      213: 346148960148328372
-    second: gumpywalk_5
-  - first:
-      213: -7989088729293820159
-    second: gumpywalk_6
-  - first:
-      213: -1271831486029155820
-    second: gumpywalk_7
-  - first:
-      213: 8664719925509454974
-    second: gumpywalk_8
-  - first:
-      213: 5793904767721902207
-    second: gumpywalk_9
-  - first:
-      213: -5323132067144508128
-    second: gumpywalk_10
-  - first:
-      213: -1233304974209088198
-    second: gumpywalk_11
+      213: -7382960553635193847
+    second: Alleyway_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -80,7 +47,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 29
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -130,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -143,23 +110,10 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: 4
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -172,7 +126,117 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gumpywalk_0
+      name: Alleyway_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c5ad93e747a8990800000000000000
+      internalID: -7382960553635193847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alleyway_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e771c3718794d9ea0e36f30cdbdeea
+      internalID: 1622379554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alleyway_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68e2a63581bd94451af1e7aee64032a8
+      internalID: -295231843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alleyway_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0baf76cf20b8b43a694e515e32f047de
+      internalID: -2044464625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alleyway_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93c37bf33dd224183bc818fa2bf08b70
+      internalID: -1313321445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alleyway_5
       rect:
         serializedVersion: 2
         x: 0
@@ -185,38 +249,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 601256a04a9b30160800000000000000
-      internalID: 6990635160809316614
+      spriteID: 5a2b1194c8ab94799be88d136fa03230
+      internalID: -2054517754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gumpywalk_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6d80ef3bcb3c7c660800000000000000
-      internalID: 7406103327475108054
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gumpywalk_2
+      name: Alleyway_6
       rect:
         serializedVersion: 2
         x: 64
@@ -229,16 +271,60 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d667baf23987d6900800000000000000
-      internalID: 679331692358104685
+      spriteID: b6be692d53cc14226a1acc9bb4bfe76a
+      internalID: -825393809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gumpywalk_3
+      name: Alleyway_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83afe9da4b0764b3a8191e66c9fa7320
+      internalID: 677674210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alleyway_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f70ce1e5ad90464384f5dd0179140de
+      internalID: -965684707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alleyway_9
       rect:
         serializedVersion: 2
         x: 0
@@ -251,16 +337,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4c9b4351415ba98a0800000000000000
-      internalID: -6297522031064467004
+      spriteID: a39938d46f43a478a907a52ccb16d0ad
+      internalID: 1802921066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gumpywalk_4
+      name: Alleyway_10
       rect:
         serializedVersion: 2
         x: 32
@@ -273,16 +359,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e051ec4526f6c8460800000000000000
-      internalID: 7245288368652555534
+      spriteID: 87367a41bf5ca42c8ae2d39998534fde
+      internalID: -1582091030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gumpywalk_5
+      name: Alleyway_11
       rect:
         serializedVersion: 2
         x: 64
@@ -295,142 +381,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4bf030135a4cdc400800000000000000
-      internalID: 346148960148328372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gumpywalk_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 10f6d53f02e012190800000000000000
-      internalID: -7989088729293820159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gumpywalk_7
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 412331d700c895ee0800000000000000
-      internalID: -1271831486029155820
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gumpywalk_8
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e7c7d365dd44f3870800000000000000
-      internalID: 8664719925509454974
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gumpywalk_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f70918650b5186050800000000000000
-      internalID: 5793904767721902207
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gumpywalk_10
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02d5c5d869f6026b0800000000000000
-      internalID: -5323132067144508128
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gumpywalk_11
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a358b8809ab62eee0800000000000000
-      internalID: -1233304974209088198
+      spriteID: 431ec73fff5b042f7a091ed32f102f75
+      internalID: -1578418262
       vertices: []
       indices: 
       edges: []
@@ -439,7 +393,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 788a054edb32dca4b9644a1bdf8ef28f
+    spriteID: 821c558c77c1747ce957051d6c502ba5
     internalID: 0
     vertices: []
     indices: 
@@ -451,18 +405,18 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      gumpywalk_0: 6990635160809316614
-      gumpywalk_1: 7406103327475108054
-      gumpywalk_10: -5323132067144508128
-      gumpywalk_11: -1233304974209088198
-      gumpywalk_2: 679331692358104685
-      gumpywalk_3: -6297522031064467004
-      gumpywalk_4: 7245288368652555534
-      gumpywalk_5: 346148960148328372
-      gumpywalk_6: -7989088729293820159
-      gumpywalk_7: -1271831486029155820
-      gumpywalk_8: 8664719925509454974
-      gumpywalk_9: 5793904767721902207
+      Alleyway_0: -7382960553635193847
+      Alleyway_1: 1622379554
+      Alleyway_10: -1582091030
+      Alleyway_11: -1578418262
+      Alleyway_2: -295231843
+      Alleyway_3: -2044464625
+      Alleyway_4: -1313321445
+      Alleyway_5: -2054517754
+      Alleyway_6: -825393809
+      Alleyway_7: 677674210
+      Alleyway_8: -965684707
+      Alleyway_9: 1802921066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

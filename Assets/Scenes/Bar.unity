@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Alley
       objectReference: {fileID: 0}
+    - target: {fileID: 4918659091635163793, guid: 0d4220b1c302d4b9394b10cca50872dd, type: 3}
+      propertyPath: newPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6069398337201863897, guid: 0d4220b1c302d4b9394b10cca50872dd, type: 3}
       propertyPath: m_Size.x
       value: 1.3604238
