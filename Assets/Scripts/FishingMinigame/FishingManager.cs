@@ -161,6 +161,7 @@ public class FishingManager : MonoBehaviour
     private IEnumerator PlayFishCaughtAnimation()
     {
         Sprite fish = fishSprites[Random.Range(0, fishSprites.Count)];
+        fishSprites.Remove(fish);
 
         fishAnimator.gameObject.GetComponent<Image>().sprite = fish;
         fishAnimator.SetTrigger("PlayAnimation");

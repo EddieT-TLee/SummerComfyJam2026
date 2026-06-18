@@ -929,7 +929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -487.5, y: 145.6}
+  m_AnchoredPosition: {x: -487.5, y: 129.6}
   m_SizeDelta: {x: 375, y: 75}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &937237464
@@ -950,7 +950,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 0
+  m_Spacing: 16
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1116,6 +1116,9 @@ MonoBehaviour:
   fishSprites:
   - {fileID: -8664447315593856727, guid: 21a8c916e09080442aa22c04c80a2a72, type: 3}
   - {fileID: -696311922912676901, guid: c9040d542fa4ad348809f111b4d940aa, type: 3}
+  - {fileID: -4430957865779604888, guid: 71a10defa99dd45428c76729525c1d71, type: 3}
+  - {fileID: 4480331256387193472, guid: e43986127cf757b4b97bdf3ce8f6c11f, type: 3}
+  - {fileID: -2301228132537844286, guid: 0a816d8aed5467d4ea9e68ff45d6150a, type: 3}
   castLineButton: {fileID: 1254645732}
   instructionsScreen: {fileID: 146036698}
   startButton: {fileID: 1777803462}
@@ -2153,6 +2156,10 @@ PrefabInstance:
     - target: {fileID: 1288593134867335100, guid: 10961aed7931a4643bf0fa3706b697d6, type: 3}
       propertyPath: m_Name
       value: Bait Counter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120482920618347401, guid: 10961aed7931a4643bf0fa3706b697d6, type: 3}
+      propertyPath: m_Spacing
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6548489618702256335, guid: 10961aed7931a4643bf0fa3706b697d6, type: 3}
       propertyPath: m_LocalPosition.z
