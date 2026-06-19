@@ -8,25 +8,16 @@ public class BaitCounter : MonoBehaviour
     [SerializeField]
     private GameObject baitPrefab;
 
-    [SerializeField]
-    private float spacing = 0f;
-
     private readonly List<Image> baitImages = new List<Image>();
     public int bait = 5;
     
     private void Awake()
     {
-        ApplyLayoutSettings();
-        BuildBaitImages();
-    }
+        HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
+        RectTransform rect = GetComponent<RectTransform>();
+        layoutGroup.childControlWidth = true;
+        layoutGroup.childControlHeight = true;
 
-    private void OnValidate()
-    {
-        ApplyLayoutSettings();
-    }
-
-    private void BuildBaitImages()
-    {
         bait = Mathf.Max(0, bait);
         baitImages.Clear();
 
@@ -37,22 +28,15 @@ public class BaitCounter : MonoBehaviour
             Image baitImage = Instantiate(baitPrefab, transform).GetComponent<Image>();
 
             baitImage.name = $"Bait {i + 1}";
+            baitImage.rectTransform.sizeDelta = new Vector2(64, 64);
+            baitImage.preserveAspect = true;
             baitImages.Add(baitImage);
         }
 
-        if (transform is RectTransform rectTransform)
-        {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
-        }
-    }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
 
-    private void ApplyLayoutSettings()
-    {
-        HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
-
-        if (layoutGroup == null) return;
-
-        layoutGroup.spacing = spacing;
+        layoutGroup.childControlWidth = false;
+        layoutGroup.childControlHeight = false;
     }
 
     public void UseBait()

@@ -33,9 +33,16 @@ public class FishingManager : MonoBehaviour
     [SerializeField]
     private GameObject endScreen;
     [SerializeField]
-    private TMP_Text endScreenText;    
+    private TMP_Text endScreenText;
+    [SerializeField]
+    private Button returnButton;
     
-    private Gradient colors;
+    [SerializeField]
+    private Color dangerColor;
+    [SerializeField]
+    private Color neutralColor;
+    [SerializeField]
+    private Color winningColor;
 
     private float fishCaughtProgress = 0.5f;
     private const float CATCH_TIME = 10f;
@@ -45,26 +52,6 @@ public class FishingManager : MonoBehaviour
 
     private int fishCaught = 0;
     private const int FISH_GOAL = 3;
-
-    private void Awake()
-    {
-        colors = new Gradient();
-
-        colors.SetKeys(
-            new GradientColorKey[]
-            {
-                new GradientColorKey(Color.red, 0.25f),
-                new GradientColorKey(Color.white, 0.5f),
-                new GradientColorKey(Color.green, 1f)
-            },
-            new GradientAlphaKey[]
-            {
-                new GradientAlphaKey(1f, 0f),
-                new GradientAlphaKey(1f, 0f),
-                new GradientAlphaKey(1f, 0f)
-            }
-        );
-    }
 
     private void Start()
     {
@@ -78,6 +65,11 @@ public class FishingManager : MonoBehaviour
 
         startButton.onClick.AddListener(StartGame);
         castLineButton.onClick.AddListener(CastLine);
+
+        if (SceneLoader.instance != null)
+        {
+            returnButton.onClick.AddListener(SceneLoader.instance.ReturnToPreviousScene);
+        }
     }
 
     private void Update()
@@ -103,7 +95,17 @@ public class FishingManager : MonoBehaviour
             OnFishCaught();
         }
 
-        progressBar.UpdateColor(colors.Evaluate(fishCaughtProgress));
+        if (fishCaughtProgress < 0.25f)
+        {
+            progressBar.UpdateColor(dangerColor);
+        } else if (fishCaughtProgress < 0.75f)
+        {
+            progressBar.UpdateColor(neutralColor);
+        } else
+        {
+            progressBar.UpdateColor(winningColor);
+        }
+
         progressBar.UpdateProgress(fishCaughtProgress);
     }
 
@@ -188,7 +190,7 @@ public class FishingManager : MonoBehaviour
 
         Image img = fishObject.AddComponent<Image>();
         img.sprite = fish;
-        img.rectTransform.sizeDelta = new Vector2(75f, 75f);
+        img.rectTransform.sizeDelta = new Vector2(64, 64);
         img.preserveAspect = true;
     }
 

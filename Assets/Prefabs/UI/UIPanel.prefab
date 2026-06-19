@@ -69,7 +69,7 @@ MonoBehaviour:
     eget velit tempor lobortis.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be697dccd45cc8f4dbb2e2e39efd278f, type: 2}
-  m_sharedMaterial: {fileID: 1563866403222497500, guid: be697dccd45cc8f4dbb2e2e39efd278f, type: 2}
+  m_sharedMaterial: {fileID: -4302247610733586860, guid: be697dccd45cc8f4dbb2e2e39efd278f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -226,6 +226,18 @@ PrefabInstance:
     - target: {fileID: 2611752022471925089, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_Name
       value: UiButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: be697dccd45cc8f4dbb2e2e39efd278f, type: 2}
+    - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4302247610733586860, guid: be697dccd45cc8f4dbb2e2e39efd278f, type: 2}
+    - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7945853341093306828, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_Pivot.x
