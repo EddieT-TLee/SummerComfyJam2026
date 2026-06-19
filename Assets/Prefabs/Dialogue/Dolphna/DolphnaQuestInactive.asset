@@ -13,6 +13,32 @@ MonoBehaviour:
   m_Name: DolphnaQuestInactive
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: 
-  npcPortraitSprites: []
-  dialogueLines: []
+  npcPortraitSprites:
+  - {fileID: -3574535371527339200, guid: 9c5ebf7871b22944ba41f8e199b63210, type: 3}
+  dialogueLines:
+  - text: Can ya help?
+    portraitIndex: 0
+    choices:
+    - resetDialogue: 0
+      onChoiceSelected:
+      - actionType: 1
+        questName: 
+        dialogue: {fileID: 11400000, guid: d66839764e7ccb548be164145a002b5f, type: 2}
+      - actionType: 0
+        questName: Whack-A-Mole
+        dialogue: {fileID: 11400000, guid: d66839764e7ccb548be164145a002b5f, type: 2}
+      choiceText: Yes
+      portraitIndex: 0
+      chudLines:
+      - text: Yipee!
+        portraitIndex: 0
+        choices: []
+    - resetDialogue: 1
+      onChoiceSelected: []
+      choiceText: No
+      portraitIndex: 0
+      chudLines:
+      - text: Awwww...
+        portraitIndex: 0
+        choices: []
   typingSpeed: 0.05

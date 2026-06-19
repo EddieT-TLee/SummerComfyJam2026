@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: DolphnaQuestActive
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: 
-  npcPortraitSprites: []
-  dialogueLines: []
+  npcPortraitSprites:
+  - {fileID: -3574535371527339200, guid: 9c5ebf7871b22944ba41f8e199b63210, type: 3}
+  dialogueLines:
+  - text: Bruh where my elp?
+    portraitIndex: 0
+    choices: []
   typingSpeed: 0.05
