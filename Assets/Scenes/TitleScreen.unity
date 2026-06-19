@@ -325,10 +325,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_text
-      value: "Programmers:\nDeddie -\n\nCubes-\n\nGabriel Morris -\n\nArtist:\nmeloncholy_water 
-        -\n\nCybadger -\n\nErrorZip37 -\n\n\nMusic:\nChristopher Tull -\n\nCredit:
-        \nBeach Tileset and Asset Expansion Pack 32x32 Pixels - schwarnhild\n\nTop
-        Down House -  MEITdev\n\nBasic map 32x32 -q Ivan voirol\n\n"
+      value: "Programmers:\nCubeKi\nDeddie \nGabriel Morris\n\nArtist:\nmeloncholy_water
+        \nCybadger\nErrorZip37\n\n\nMusic:\nChristopher Tull\n\nCredit: \nBeach Tileset
+        and Asset Expansion Pack 32x32 Pixels - schwarnhild\n\nTop Down House - 
+        MEITdev\n\nBasic map 32x32 - Ivan voirol\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_fontAsset

@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837996447413138810, guid: 7c8ef5ff7c924ca45abe41c8ea567be9, type: 3}
       propertyPath: m_Size.y
-      value: 1.867692
+      value: 2.0559912
       objectReference: {fileID: 0}
     - target: {fileID: 4837996447413138810, guid: 7c8ef5ff7c924ca45abe41c8ea567be9, type: 3}
       propertyPath: m_Offset.x
@@ -263,7 +263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837996447413138810, guid: 7c8ef5ff7c924ca45abe41c8ea567be9, type: 3}
       propertyPath: m_Offset.y
-      value: -0.433846
+      value: -0.3396964
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837996447413138810, guid: 7c8ef5ff7c924ca45abe41c8ea567be9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7509612134069350169, guid: 7c8ef5ff7c924ca45abe41c8ea567be9, type: 3}
       propertyPath: minigameSceneString
@@ -969,6 +973,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghoream
       objectReference: {fileID: 0}
+    - target: {fileID: 7500621039505477266, guid: 298a882a9bfb94c82bff6ce2b88423aa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034351683113106578, guid: 298a882a9bfb94c82bff6ce2b88423aa, type: 3}
+      propertyPath: questName
+      value: Ice Cream Stack
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034351683113106578, guid: 298a882a9bfb94c82bff6ce2b88423aa, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 16e9357d9ce794df2913d241c4969af2, type: 2}
+    - target: {fileID: 9034351683113106578, guid: 298a882a9bfb94c82bff6ce2b88423aa, type: 3}
+      propertyPath: questCompletedDialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 53e03746c81c24bad9522144c73f4d17, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
