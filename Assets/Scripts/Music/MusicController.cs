@@ -9,8 +9,8 @@ public class MusicController : MonoBehaviour
 
     [SerializeField]
     private List<SceneMusic> sceneMusics;
-    public AudioSource audioSource;
-    public SceneMusic? currentSceneMusic;
+    private AudioSource audioSource;
+    private SceneMusic? currentSceneMusic;
     private Dictionary<string, SceneMusic> sceneMusicPairs = new Dictionary<string, SceneMusic>();
     private Coroutine transitionCoroutine;
     
