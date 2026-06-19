@@ -49,8 +49,8 @@ public class NPC : MonoBehaviour, IInteractable
         {
             
             if (QuestController.instance != null &&
-                QuestController.instance.GetQuestStatus(questName) == QuestStatus.Completed &&
-                questCompleted)
+                QuestController.instance.GetQuestStatus(questName) == QuestStatus.Completed && 
+                !questCompleted)
             {
                 questCompleted = true;
                 ChangeNPCDialogue(questCompletedDialogueData);

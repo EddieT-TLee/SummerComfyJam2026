@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
   m_Name: GhoreamFinished
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  npcName: 
+  npcName: Ghoream
   npcPortraitSprites:
   - {fileID: 4101742231312144279, guid: 6f4dd7c3720e1db4c884d7d984950ccd, type: 3}
   dialogueLines:
