@@ -16,10 +16,10 @@ MonoBehaviour:
   npcPortraitSprites:
   - {fileID: -7884742618405041543, guid: 0e1385ab250f9dc42ab87090e82df463, type: 3}
   dialogueLines:
-  - text: Yo idiot
+  - text: Hi Gumpybear!
     portraitIndex: 0
     choices: []
-  - text: I was here the whole time
+  - text: You found me! You did amazing my little adventurer!
     portraitIndex: 0
     choices: []
   typingSpeed: 0.05

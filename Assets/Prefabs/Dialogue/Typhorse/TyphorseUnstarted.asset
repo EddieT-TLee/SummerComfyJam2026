@@ -39,7 +39,7 @@ MonoBehaviour:
       - text: Go test yo strength over there
         portraitIndex: 0
         choices: []
-    - resetDialogue: 0
+    - resetDialogue: 1
       onChoiceSelected: []
       choiceText: "Nah, i\u2019m not strong"
       portraitIndex: 0

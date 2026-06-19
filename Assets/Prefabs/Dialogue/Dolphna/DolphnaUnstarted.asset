@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: DolphnaUnstarted
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Dolphna
+  npcPortraitSprites:
+  - {fileID: -3574535371527339200, guid: 9c5ebf7871b22944ba41f8e199b63210, type: 3}
+  dialogueLines:
+  - text: Hey you!
+    portraitIndex: 0
+    choices: []
+  - text: You look strong and capable!
+    portraitIndex: 0
+    choices: []
+  - text: Can you help me with my pesky mole problem? I'll reward handsomely!
+    portraitIndex: 0
+    choices:
+    - resetDialogue: 0
+      onChoiceSelected:
+      - actionType: 0
+        questName: Whack-A-Mole
+        dialogue: {fileID: 0}
+      - actionType: 1
+        questName: Whack-A-Mole
+        dialogue: {fileID: 11400000, guid: 2d83257ac454aff459c95714a4d580d8, type: 2}
+      choiceText: Sure!
+      portraitIndex: 0
+      chudLines:
+      - text: Thank you so much! I knew I could count on you!
+        portraitIndex: 0
+        choices: []
+      - text: There's a Whack-A-Mole machine in the bar. I never beat the high score
+          on it.
+        portraitIndex: 0
+        choices: []
+      - text: Please beat it for me!
+        portraitIndex: 0
+        choices: []
+    - resetDialogue: 1
+      onChoiceSelected: []
+      choiceText: '*walk away*'
+      portraitIndex: 0
+      chudLines:
+      - text: Oh...
+        portraitIndex: 0
+        choices: []
+  typingSpeed: 0.05
