@@ -1002,6 +1002,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 412612518888368269, guid: 3980a7a5c30034e39819d3995404a845, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 96f86878287544710ac8aa37157c1822, type: 2}
     - target: {fileID: 2262510782511148438, guid: 3980a7a5c30034e39819d3995404a845, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -23780,6 +23784,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 458547421753338924, guid: 2a5d799302cc046ed99188de083bb994, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fb7c74c26de6434b8cc10fb7decd4bb, type: 2}
     - target: {fileID: 4815857464448468540, guid: 2a5d799302cc046ed99188de083bb994, type: 3}
       propertyPath: m_Name
       value: T-Dawg

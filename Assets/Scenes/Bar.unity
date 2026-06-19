@@ -497,7 +497,7 @@ PrefabInstance:
     - target: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
       propertyPath: dialogueData
       value: 
-      objectReference: {fileID: 11400000, guid: 9307890e7151a4800abb5b13fe8fc71a, type: 2}
+      objectReference: {fileID: 11400000, guid: 30e16c5c876fb409b9623b1c10745a85, type: 2}
     - target: {fileID: 512704639921393801, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
       propertyPath: m_Name
       value: BarTender
@@ -8984,6 +8984,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 458547421753338924, guid: 2a5d799302cc046ed99188de083bb994, type: 3}
+      propertyPath: dialogueData
+      value: 
+      objectReference: {fileID: 11400000, guid: 414fd0333c92c4a9c908af3f4ec0fba2, type: 2}
     - target: {fileID: 4815857464448468540, guid: 2a5d799302cc046ed99188de083bb994, type: 3}
       propertyPath: m_Name
       value: T-Dawg Variant
