@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: T-DawgBeach
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: T-Dawg
+  npcPortraitSprites:
+  - {fileID: -5658968404288830900, guid: 50c91c6482b27864ab05a204b2a9b41b, type: 3}
+  dialogueLines:
+  - text: 'Hi! My name is T-Dawg, but you can call me..
+
+      Morris!'
+    portraitIndex: 0
+    choices: []
+  - text: "Also did you know that you can obtain orpheos telos by maxxing out all
+      of the \nSocial Links in Persona 3 Reload?"
+    portraitIndex: 0
+    choices: []
+  typingSpeed: 0.05
