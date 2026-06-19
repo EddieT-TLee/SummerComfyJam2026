@@ -6,6 +6,7 @@ public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance {get; private set;}
 
+    private GameObject player = null;
     private bool hasHiddenScene = false;
     private Scene hiddenScene;
 
@@ -18,6 +19,12 @@ public class SceneLoader : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
     }
 
     /// <summary>
@@ -34,17 +41,30 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     public void ReturnToPreviousScene()
     {
-        if (!hasHiddenScene) return;
+        StartCoroutine(ReturnToScene());
+    }
 
+    private IEnumerator ReturnToScene()
+    {
+        if (!hasHiddenScene) yield break;
         Scene additiveScene = SceneManager.GetActiveScene();
 
-        ToggleScene(hiddenScene, true);
-        SceneManager.SetActiveScene(hiddenScene);
+        yield return StartCoroutine(ScreenFader.instance.FadeOut());
 
-        SceneManager.UnloadSceneAsync(additiveScene);
-
-        hasHiddenScene = false;
+        AsyncOperation loadOperation = SceneManager.UnloadSceneAsync(additiveScene);
         PauseManager.IsPaused = false;
+
+        while (!loadOperation.isDone)
+        {
+            yield return null;
+        }
+        
+        SceneManager.SetActiveScene(hiddenScene);
+        ToggleScene(hiddenScene, true);
+        hasHiddenScene = false;
+        Debug.Log("Start fade out");
+        yield return StartCoroutine(ScreenFader.instance.FadeIn());
+
     }
 
     private IEnumerator LoadAndHide(string sceneString)
@@ -52,6 +72,8 @@ public class SceneLoader : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         hiddenScene = currentScene;
         hasHiddenScene = true;
+
+        yield return StartCoroutine(ScreenFader.instance.FadeOut());
 
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneString, LoadSceneMode.Additive);
         PauseManager.IsPaused = true;
@@ -65,17 +87,19 @@ public class SceneLoader : MonoBehaviour
         Scene newScene = SceneManager.GetSceneByName(sceneString);
         SceneManager.SetActiveScene(newScene);
         ToggleScene(currentScene, false);
+        
+        yield return StartCoroutine(ScreenFader.instance.FadeIn());
     }
 
-    private static void ToggleScene(Scene scene, bool state)
+    private void ToggleScene(Scene scene, bool state)
     {
         if (scene.isLoaded)
         {
-            GameObject root = new GameObject();
-
             foreach (GameObject obj in scene.GetRootGameObjects()) { 
                 obj.SetActive(state);
             }
+
+            player.SetActive(state);
         }
     }
 }
