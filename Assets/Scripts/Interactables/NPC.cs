@@ -7,7 +7,7 @@ public class NPC : MonoBehaviour, IInteractable
     public NPCDialogue dialogueData;
     public NPCDialogue questCompletedDialogueData;
     public string questName;
-    private bool questCompleted = false;;
+    private bool questCompleted = false;
 
     private DialogueController dialogueUI;
     private int dialogueIndex;
