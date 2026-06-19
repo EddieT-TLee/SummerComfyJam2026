@@ -155,12 +155,11 @@ MonoBehaviour:
   - {fileID: 6660598419530822318, guid: 49487158a8dc6c545854e76f81ddbe2d, type: 3}
   - {fileID: -1470787517491222099, guid: 38f6ad10f05d54b43972ed05c82f7b78, type: 3}
   - {fileID: -8794488586824107619, guid: c0f37e8dab7a534438b4c936185bdf8e, type: 3}
+  cherrySprite: {fileID: -90375647409325229, guid: 738c44a5e80dc1342a0518a774e0d12a, type: 3}
   iceCreamCone: {fileID: 1683408597}
   startingLives: 3
   livesCounter: {fileID: 810794925}
   lifeIconSprite: {fileID: -1470787517491222099, guid: 38f6ad10f05d54b43972ed05c82f7b78, type: 3}
-  lifeIconSize: {x: 64, y: 64}
-  offscreenMargin: 1
 --- !u!4 &419860661
 Transform:
   m_ObjectHideFlags: 0

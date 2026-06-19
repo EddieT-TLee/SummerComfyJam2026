@@ -4,22 +4,28 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class IceCreamStack : MonoBehaviour {
+    [Header("Ice Cream Game Object Stuff")]
     [SerializeField] private Transform iceCreamScoopPrefab;
     [SerializeField] private List<Sprite> iceCreamScoopSprites;
+    [SerializeField] private Sprite cherrySprite;
     private List<Transform> iceCreamScoops = new List<Transform>();
-    private int iceCreamScoopIndex = 0;
+    private int iceCreamScoopSpriteIndex = 0;
 
+    [Header("Ice Cream Cone")]
     [SerializeField] private Transform iceCreamCone;
     private int coneSortingOrder;
 
+    [Header("Ice Cream Cone Game Variables")]
     [SerializeField] private int startingLives = 3;
     [SerializeField] private RectTransform livesCounter;
     [SerializeField] private Sprite lifeIconSprite;
+    
     private Vector2 lifeIconSize = new Vector2(64f, 64f);
 
     private readonly List<Image> lifeIcons = new List<Image>();
     private int lives;
     private bool gameFailed;
+    private bool gameWon;
 
     private Transform currentScoop = null;
     private Rigidbody2D currentRigidBody;
@@ -32,6 +38,10 @@ public class IceCreamStack : MonoBehaviour {
     private float scoopDirection = 1;
     private float xLimit = 5;
 
+    private const int WinningScoop = 11;
+    private int scoopsStacked = 0;
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         mainCamera = Camera.main;
@@ -42,10 +52,11 @@ public class IceCreamStack : MonoBehaviour {
         CreateLifeIcons();
         UpdateLivesCounter();
         SpawnNewScoop();
+        
     }
 
     void Update() {
-        if (gameFailed) return;
+        if (gameFailed || gameWon) return;
       
         if (currentScoop) {
             float moveAmount = Time.deltaTime * scoopSpeed * scoopDirection;
@@ -55,7 +66,7 @@ public class IceCreamStack : MonoBehaviour {
                 scoopDirection = -scoopDirection;
             }
 
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 currentScoop = null;
                 currentRigidBody.simulated = true;
@@ -79,6 +90,13 @@ public class IceCreamStack : MonoBehaviour {
             FailGame();
         }
     }
+    
+    public void WinGame()
+    {
+        gameWon = true;
+        currentScoop = null;
+        Debug.Log("You win! Perfect ice cream cone!");
+    }
 
     public void FailGame()
     {
@@ -98,19 +116,32 @@ public class IceCreamStack : MonoBehaviour {
 
     private void SpawnNewScoop()
     {
+        
         currentScoop = Instantiate(iceCreamScoopPrefab);
         iceCreamScoops.Add(currentScoop);
 
-        currentScoop.GetComponent<SpriteRenderer>().sprite = iceCreamScoopSprites[iceCreamScoopIndex];
-        currentScoop.GetComponent<IceCream>()?.Initialize(iceCreamCone);
-        iceCreamScoopIndex = (iceCreamScoopIndex + 1) % iceCreamScoopSprites.Count;
+        bool isCherry = scoopsStacked + 1 >= WinningScoop;
+        SpriteRenderer sr = currentScoop.GetComponent<SpriteRenderer>();
+        sr.sprite = isCherry ? cherrySprite : iceCreamScoopSprites[iceCreamScoopSpriteIndex];
+
+        if (!isCherry)
+            iceCreamScoopSpriteIndex = (iceCreamScoopSpriteIndex + 1) % iceCreamScoopSprites.Count;
+
+        IceCream iceCream = currentScoop.GetComponent<IceCream>();
+        iceCream?.Initialize(iceCreamCone, () =>
+        {
+            scoopsStacked++;
+            if (iceCream.IsCherry)
+                WinGame();
+        });
+        if (iceCream != null) iceCream.IsCherry = isCherry; // ← set the flag
 
         currentScoop.position = scoopStartPosition;
         currentRigidBody = currentScoop.GetComponent<Rigidbody2D>();
 
         scoopSpeed += scoopSpeedIncrement;
     }
-
+    
     private void UpdateScoopDepths()
     {
         foreach (Transform scoop in iceCreamScoops)

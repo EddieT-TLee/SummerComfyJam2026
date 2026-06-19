@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class IceCream : MonoBehaviour
@@ -8,10 +9,15 @@ public class IceCream : MonoBehaviour
     private Rigidbody2D rb;
 
     public bool IsFrozen { get; private set; }
+    
+    public bool IsCherry { get; set; }
+    
+    private Action onFrozen;
 
-    public void Initialize(Transform iceCreamCone)
+    public void Initialize(Transform iceCreamCone, Action onFrozenCallback = null)
     {
         cone = iceCreamCone;
+        onFrozen = onFrozenCallback;
     }
 
     private void Awake()
@@ -65,5 +71,7 @@ public class IceCream : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         rb.bodyType = RigidbodyType2D.Static;
+        
+        onFrozen?.Invoke();
     }
 }
