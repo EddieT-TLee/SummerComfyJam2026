@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6991631590898990035
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 57695186130147910, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.69992495
+      objectReference: {fileID: 0}
+    - target: {fileID: 57695186130147910, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.01451993
+      objectReference: {fileID: 0}
+    - target: {fileID: 57695186130147910, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.71875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161383071203868709, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: bruh
+      value: 
+      objectReference: {fileID: -3049322125240120499, guid: 3493164417e224c7c837f8356ae54bc1, type: 3}
+    - target: {fileID: 3161383071203868709, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: minigameScene
+      value: BallToss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161383071203868709, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: minigameSceneString
+      value: BallToss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303280647007830257, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4020216554370571409, guid: 89220fb860f81ad46a288f8e9bffcb05, type: 3}
+    - target: {fileID: 4303280647007830257, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303280647007830257, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303280647007830257, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252253083366954076, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901322784228764760, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: m_Name
+      value: BallToss Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
