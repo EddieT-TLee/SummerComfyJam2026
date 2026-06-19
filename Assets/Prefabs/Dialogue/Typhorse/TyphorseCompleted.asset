@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: TyphorseCompleted
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Typhorse
+  npcPortraitSprites:
+  - {fileID: -8026601825944604584, guid: f61eca5ca29e1bc4cb4aaf935ccec363, type: 3}
+  dialogueLines:
+  - text: Well kid, I'm proud of you.
+    portraitIndex: 0
+    choices: []
+  - text: 'Still not better than ME but... '
+    portraitIndex: 0
+    choices: []
+  - text: You got what it takes I suppose.
+    portraitIndex: 0
+    choices: []
+  - text: 'What if the code is the same number four time '
+    portraitIndex: 0
+    choices: []
+  - text: Type shit
+    portraitIndex: 0
+    choices: []
+  typingSpeed: 0.05

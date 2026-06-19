@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: TyphorseUnstarted
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Typhorse
+  npcPortraitSprites:
+  - {fileID: -8026601825944604584, guid: f61eca5ca29e1bc4cb4aaf935ccec363, type: 3}
+  dialogueLines:
+  - text: HEY YOU PIPSQUEAK!!!
+    portraitIndex: 0
+    choices: []
+  - text: Bet you don't have what it takes to best MY stand!
+    portraitIndex: 0
+    choices:
+    - resetDialogue: 0
+      onChoiceSelected:
+      - actionType: 0
+        questName: Test of Strength
+        dialogue: {fileID: 0}
+      - actionType: 1
+        questName: 
+        dialogue: {fileID: 11400000, guid: 2f21fb4d33a4e4b1fa2e2787919671a0, type: 2}
+      choiceText: I got this!
+      portraitIndex: 0
+      chudLines:
+      - text: Heck yeah Brother
+        portraitIndex: 0
+        choices: []
+      - text: Go test yo strength over there
+        portraitIndex: 0
+        choices: []
+    - resetDialogue: 0
+      onChoiceSelected: []
+      choiceText: "Nah, i\u2019m not strong"
+      portraitIndex: 0
+      chudLines:
+      - text: Not with that attitude
+        portraitIndex: 0
+        choices: []
+  typingSpeed: 0.05
