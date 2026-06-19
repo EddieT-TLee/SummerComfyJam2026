@@ -160,7 +160,8 @@ public class Keypad : MonoBehaviour, IInteractable
     IEnumerator OpenMalumaDialogue()
     {
         yield return new WaitForSeconds(2f);
-        
+        yield return StartCoroutine(ScreenFader.instance.FadeOut());
+
 
         keypad.SetActive(false);
         keypad.SetActive(false);
@@ -227,6 +228,18 @@ public class Keypad : MonoBehaviour, IInteractable
         dialogueUI.SetDialogueText("");
         dialogueUI.ShowDialogueUI(false);
         
-        // Add change scene to final screen here
+        // End Sequence
+        StartCoroutine(EndSequence());
+    }
+    
+    private IEnumerator EndSequence()
+    {
+        yield return StartCoroutine(ScreenFader.instance.FadeIn());
+
+        yield return new WaitForSeconds(0.5f);
+        // Add final scene change here later tho
+        //yield return StartCoroutine(ScreenFader.instance.FadeOut());
+        
+      
     }
 }

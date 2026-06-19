@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,9 +11,17 @@ public class Teleporter : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            SceneManager.LoadScene(sceneToLoad);
+            PauseManager.IsPaused = true;
+            StartCoroutine(FadeAndLoad());
         }
+    }
+
+    private IEnumerator FadeAndLoad()
+    {
+        yield return StartCoroutine(ScreenFader.instance.FadeOut());
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -23,6 +32,8 @@ public class Teleporter : MonoBehaviour
         if (playerObj != null)
         {
             playerObj.transform.position = new Vector3(newPosition.x, newPosition.y, playerObj.transform.position.z);
-        }
+            PauseManager.IsPaused = false;
+        }            
+        ScreenFader.instance.StartFadeIn();
     }
 }
