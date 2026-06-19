@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
   m_Name: DolphnaQuestActive
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  npcName: 
+  npcName: Dolphna
   npcPortraitSprites:
   - {fileID: -3574535371527339200, guid: 9c5ebf7871b22944ba41f8e199b63210, type: 3}
   dialogueLines:
