@@ -8,9 +8,11 @@ public class TestOfStrength : MonoBehaviour
     public GameObject powerBar;
     public Animator hammerAnimator;
     public Animator bellAnimator;
+    public GameObject WinPanel;
     public TMP_Text strengthText;
     public Transform bellPosition;
     public Transform sliderPosition;
+    public GameObject instructionScreen;
     
 
     private SpriteRenderer powerBarRenderer;
@@ -18,7 +20,7 @@ public class TestOfStrength : MonoBehaviour
     private Vector3 centerPosition;
     private Vector3 offsetPosition;
 
-    private bool moving = true;
+    private bool moving = false;
 
     private float powerBarCenter;
     private float powerBarHeight;
@@ -66,6 +68,12 @@ public class TestOfStrength : MonoBehaviour
             }
         }
     }
+
+    public void StartGame()
+    {
+        instructionScreen.SetActive(false);
+        moving = true;
+    }
     
     void SetStrengthText(float power)
     {
@@ -83,7 +91,7 @@ public class TestOfStrength : MonoBehaviour
             strengthText.text = "HOW???? BRO LOKWEY MIGHT BE THE WEAKEST PERSON EVER";
 
         strengthText.text += "\n Power: " + Mathf.RoundToInt(powerValue);
-        strengthText.enabled = true;
+        WinPanel.SetActive(true);
     }
     
 }

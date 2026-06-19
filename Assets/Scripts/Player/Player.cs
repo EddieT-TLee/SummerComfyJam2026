@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
             animator.SetFloat("LastInputY", input.y);
         }
     }
-
+    
     // Input action stuff
     private void OnEnable()
     {
