@@ -32,7 +32,15 @@ public class BallGameSingleton : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // Make sure only one instance
+        }
 
         ReturnButton.onClick.AddListener(ReturnToMainGame);
     }
@@ -64,7 +72,9 @@ public class BallGameSingleton : MonoBehaviour
         if (bottlesOut >= bottles.Length)
         {
             gameWon = true;
-            GameOver("You Win!!!");
+            GameOver("You Win... \n but at what cost. We no longer have bottles to store water, now " +
+                     "our children are dehydrated and our plants don't have enough water to sustain themselves. " +
+                     "We can longer survive the long summer");
         }
     }
     
@@ -89,7 +99,7 @@ public class BallGameSingleton : MonoBehaviour
         }
         else
         {
-           GameOver("YOU LOSE!!!");
+           GameOver("YOU LOSE!!! Idiot couldn't even knock down 3 bottles");
         }
  
     }
