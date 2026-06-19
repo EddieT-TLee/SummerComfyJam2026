@@ -25,7 +25,7 @@ public class InteractionDetector : MonoBehaviour
         if (collision.TryGetComponent(out IInteractable interactable) && interactable.CanInteract())
         {
             interactableObject = interactable;
-           // interactionIcon.SetActive(true);
+            interactionIcon.SetActive(true);
         }
     }
     
