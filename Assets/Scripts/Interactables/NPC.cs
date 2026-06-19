@@ -22,6 +22,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        dialogueUI = DialogueController.instance; 
+        
         try
         {
             if (QuestController.instance != null &&

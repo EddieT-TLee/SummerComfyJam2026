@@ -13,11 +13,11 @@ public class SceneLoader : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(instance);
+            Destroy(this);
         }
 
         instance = this;
-        DontDestroyOnLoad(instance);
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
