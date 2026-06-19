@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -237,9 +238,29 @@ public class Keypad : MonoBehaviour, IInteractable
         yield return StartCoroutine(ScreenFader.instance.FadeIn());
 
         yield return new WaitForSeconds(0.5f);
-        // Add final scene change here later tho
-        //yield return StartCoroutine(ScreenFader.instance.FadeOut());
         
-      
+        DeleteAllPersistentObjects();
+        AsyncOperation load = SceneManager.LoadSceneAsync("TitleScreen");
+        
+        while (!load.isDone) yield return null;
+
+        yield return StartCoroutine(ScreenFader.instance.FadeOut());
+    }
+
+    public void DeleteAllPersistentObjects()
+    {
+        Scene[] allScenes = SceneManager.GetAllScenes();
+        
+        foreach (Scene scene in allScenes)
+        {
+            if (scene.name == "DontDestroyOnLoad")
+            {
+                GameObject[] rootObjects = scene.GetRootGameObjects();
+                foreach (GameObject obj in rootObjects)
+                {
+                    Destroy(obj);
+                }
+            }
+        }
     }
 }
