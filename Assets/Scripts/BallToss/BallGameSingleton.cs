@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallGameSingleton : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class BallGameSingleton : MonoBehaviour
     [Header("Ball Game UI")]
     public GameObject WinPanel;
     public TMP_Text WinText;
+    public Button ReturnButton;
     public GameObject InstructionsPanel;
     
     [Header("Bottles for Game")]
@@ -31,6 +33,8 @@ public class BallGameSingleton : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        ReturnButton.onClick.AddListener(ReturnToMainGame);
     }
     
     void Start()
@@ -100,6 +104,9 @@ public class BallGameSingleton : MonoBehaviour
         ballsLeftText.text = "Balls: " + balls;
     }
     
-    
+    void ReturnToMainGame()
+    {
+        SceneLoader.instance.ReturnToPreviousScene();
+    }
     
 }

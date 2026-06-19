@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Minigame : MonoBehaviour, IInteractable
 {
-    public string minigameScene;
+    public string minigameSceneString;
     private bool isDialogueActive;
     private DialogueController dialogueUI; // Used to show player options to start game
 
@@ -33,10 +34,11 @@ public class Minigame : MonoBehaviour, IInteractable
         dialogueUI.CreateChoiceButton("No", () => CloseDialogue());
     }
 
-    void OpenMinigame()
+    private void OpenMinigame()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadScene(minigameScene);
+        SceneLoader.instance.SwitchToNewAdditiveScene(minigameSceneString);
+
+        dialogueUI.ShowDialogueUI(false);
         dialogueUI.ClearChoices();
     }
 
@@ -47,21 +49,5 @@ public class Minigame : MonoBehaviour, IInteractable
         dialogueUI.SetDialogueText("");
         dialogueUI.ClearChoices();
         PauseManager.IsPaused = isDialogueActive;
-    }
-
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-
-        dialogueUI.ShowDialogueUI(false);
-        
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-        {
-            // Literally just to make sure the player in not in frame
-            playerObj.transform.position = new Vector3(-100, 0, 0);
-            PauseManager.IsPaused = true;
-        }
     }
 }
