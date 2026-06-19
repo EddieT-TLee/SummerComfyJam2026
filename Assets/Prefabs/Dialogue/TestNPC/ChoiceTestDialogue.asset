@@ -23,7 +23,9 @@ MonoBehaviour:
     portraitIndex: 0
     choices:
     - resetDialogue: 0
-      questName: Find Mom
+      onChoiceSelected:
+      - actionType: 0
+        questName: Find Mom
       choiceText: ye
       portraitIndex: 0
       choiceLines:
@@ -34,7 +36,7 @@ MonoBehaviour:
         portraitIndex: 0
         choices: []
     - resetDialogue: 1
-      questName: 
+      onChoiceSelected: []
       choiceText: nah
       portraitIndex: 0
       choiceLines:

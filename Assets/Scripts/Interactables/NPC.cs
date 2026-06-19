@@ -15,9 +15,7 @@ public class NPC : MonoBehaviour, IInteractable
     private Sprite[]  portraits;
     private Animator animator;
     private string currentTalkingAnim;
-
-    private Quest quest = null;
-
+    private NPCDialogue pendingDialogueData;
 
     private void Start()
     {
@@ -118,20 +116,25 @@ public class NPC : MonoBehaviour, IInteractable
 
     void ChooseOption(DialogueChoice choice)
     {
+        if (choice.onChoiceSelected != null)
+        {
+            foreach (var action in choice.onChoiceSelected)
+            {
+                action.Invoke(this);
+            }
+        }
+
         currentPortrait = portraits[choice.portraitIndex];
         dialogueUI.SetNPCInfo(dialogueData.npcName, currentPortrait);
         dialogueUI.ClearChoices();
         // Convert the array of choice lines into dialogue lines
-        dialogueLines = choice.choiceLines;
+        dialogueLines = choice.chudLines;
 
         if (choice.resetDialogue)
         {
             reset = true;
         }
         dialogueIndex = 0;
-
-        // If this dialog starts a quest, start the damn quest (but after all dialogue is done)
-        quest = QuestController.instance.inactiveQuests.Find(x => x.name.Equals(choice.questName));
 
         DisplayCurrentLine();
     }
@@ -184,20 +187,33 @@ public class NPC : MonoBehaviour, IInteractable
             dialogueLines = dialogueData.dialogueLines;
             reset = false;
         }
+
+        if (pendingDialogueData != null)
+        {
+            ApplyDialogueData(pendingDialogueData);
+            pendingDialogueData = null;
+        }
         
         if (animator != null)
             animator.Play("Idle");
-
-        if (quest != null)
-        {
-            QuestController.instance.StartQuest(quest);
-        }
     }
 
     public void ChangeNPCDialogue(NPCDialogue npcDialogue)
     {
-        dialogueLines = npcDialogue.dialogueLines;
-        portraits = npcDialogue.npcPortraitSprites;
+        if (isDialogueActive)
+        {
+            pendingDialogueData = npcDialogue;
+            return;
+        }
+
+        ApplyDialogueData(npcDialogue);
+    }
+
+    private void ApplyDialogueData(NPCDialogue npcDialogue)
+    {
+        dialogueData = npcDialogue;
+        dialogueLines = dialogueData.dialogueLines;
+        portraits = dialogueData.npcPortraitSprites;
         dialogueIndex = 0;
         reset = false;
     }

@@ -32,13 +32,48 @@ public struct DialogueChoice
 {
     // If a choice needs to return back to the start (ex. player refused to take quest go back to start of dialogue tree)
     public bool resetDialogue;
-    public string questName;
+
+    public DialogueAction[] onChoiceSelected;
+
+    [TextArea]
     public string choiceText;
     
     [Header("Index in the portrait Sprites to use")]
     public int portraitIndex;
     
-    [SerializeField]
-    public DialogueLine[] choiceLines;
+    public DialogueLine[] chudLines;
     
+}
+
+public enum DialogueActionType
+{
+    StartQuest,
+    ChangeDialogue
+}
+
+[Serializable]
+public struct DialogueAction
+{
+    public DialogueActionType actionType;
+    public string questName;
+    public NPCDialogue dialogue;
+
+    public void Invoke(NPC npc)
+    {
+        switch (actionType)
+        {
+            case DialogueActionType.StartQuest:
+                QuestController.instance.StartQuest(questName);
+                break;
+            case DialogueActionType.ChangeDialogue:
+                if (npc == null)
+                {
+                    Debug.LogWarning("ChangeDialogue action needs an NPC.");
+                    return;
+                }
+
+                npc.ChangeNPCDialogue(dialogue);
+                break;
+        }
+    }
 }

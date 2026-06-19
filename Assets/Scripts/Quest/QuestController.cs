@@ -42,30 +42,47 @@ public class QuestController : MonoBehaviour
     /// <summary>
     /// Starts a quest.
     /// </summary>
-    /// <param name="q">Quest to start</param>
-    public void StartQuest(Quest q)
+    /// <param name="questName"></param>
+    /// <exception cref="Exception"></exception>
+    public void StartQuest(string questName)
     {
-        inactiveQuests.Remove(q);
-        activeQuests.Add(q);
-        q.onStart?.Invoke();
+        Quest quest = inactiveQuests.Find(q => q.name == questName);
+
+        if (quest == null) throw new Exception("Quest is not in QuestController"); ;
+
+        inactiveQuests.Remove(quest);
+        activeQuests.Add(quest);
+        quest.onStart?.Invoke();
     }
 
     /// <summary>
-    /// Marks a quest as complete.
+    /// Marks a quest as complete
     /// </summary>
-    /// <param name="q"></param>
-    public void CompleteQuest(Quest q)
+    /// <param name="questName"></param>
+    /// <exception cref="Exception"></exception>
+    public void CompleteQuest(string questName)
     {
-        activeQuests.Remove(q);
-        completedQuests.Add(q);
-        q.onComplete?.Invoke();
+        Quest quest = activeQuests.Find(q => q.name == questName);
+
+        if (quest == null) throw new Exception("Quest is not in QuestController"); ;
+        
+        activeQuests.Remove(quest);
+        completedQuests.Add(quest);
+        quest.onComplete?.Invoke();
     }
 
-    public QuestStatus GetQuestStatus(Quest q)
+    /// <summary>
+    /// Returns the status of a quest.
+    /// </summary>
+    /// <param name="questName"></param>
+    /// <returns>Status of quest</returns>
+    /// <exception cref="Exception"></exception>
+    public QuestStatus GetQuestStatus(string questName)
     {
-        if (inactiveQuests.Contains(q)) return QuestStatus.Inactive;
-        if (activeQuests.Contains(q)) return QuestStatus.Active;
-        if (completedQuests.Contains(q)) return QuestStatus.Completed;
+        if (inactiveQuests.Find(q => q.name == questName) != null) return QuestStatus.Inactive;
+        if (activeQuests.Find(q => q.name == questName) != null) return QuestStatus.Active;
+        if (completedQuests.Find(q => q.name == questName) != null) return QuestStatus.Completed;
+
         throw new Exception("Quest is not in QuestController");
     }
 }
