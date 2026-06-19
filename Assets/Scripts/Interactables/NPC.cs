@@ -5,6 +5,9 @@ using UnityEngine;
 public class NPC : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
+    public NPCDialogue questCompletedDialogueData;
+    public string questName;
+    private bool questCompleted = false;;
 
     private DialogueController dialogueUI;
     private int dialogueIndex;
@@ -19,13 +22,41 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        dialogueUI = DialogueController.instance;
-        dialogueLines = dialogueData.dialogueLines;
-        portraits = dialogueData.npcPortraitSprites;
-        dialogueIndex = 0;
-        reset = false;
+        try
+        {
+            if (QuestController.instance != null &&
+                QuestController.instance.GetQuestStatus(questName) == QuestStatus.Completed)
+            {
+                questCompleted = true;
+                ApplyDialogueData(questCompletedDialogueData);
+            }
+        }
+        catch (System.Exception)
+        {
+            // Quest doesn't exist or isn't completed, so keep and load default dialogueData
+        }
+
+        if (!questCompleted) ApplyDialogueData(dialogueData);
         animator = GetComponent<Animator>();
         currentTalkingAnim = "Idle";
+    }
+
+    private void Update()
+    {
+        try
+        {
+            
+            if (QuestController.instance != null &&
+                QuestController.instance.GetQuestStatus(questName) == QuestStatus.Completed &&
+                questCompleted)
+            {
+                questCompleted = true;
+                ChangeNPCDialogue(questCompletedDialogueData);
+            }
+        }
+        catch (System.Exception)
+        {
+        }
     }
 
     public bool CanInteract()
