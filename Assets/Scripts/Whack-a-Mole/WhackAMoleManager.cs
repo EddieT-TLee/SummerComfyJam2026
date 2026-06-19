@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -43,6 +42,8 @@ public class WhackAMoleManager : MonoBehaviour
     private GameObject endScreen;
     [SerializeField]
     private TMP_Text endScreenText;
+    [SerializeField]
+    private Button returnButton;
 
     private Camera cam;
     private Mouse mouse;
@@ -73,6 +74,7 @@ public class WhackAMoleManager : MonoBehaviour
         scoreTextMesh = scoreText.GetComponent<TMP_Text>();
         timeTextMesh = timeText.GetComponent<TMP_Text>();
         startGameButton.onClick.AddListener(StartGame);
+        returnButton.onClick.AddListener(SceneLoader.instance.ReturnToPreviousScene);
         HideEndScreen();
         UpdateScore(0);
         UpdateTime(TIME_LIMIT);
