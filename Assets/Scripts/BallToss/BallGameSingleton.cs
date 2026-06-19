@@ -72,6 +72,11 @@ public class BallGameSingleton : MonoBehaviour
         if (bottlesOut >= bottles.Length)
         {
             gameWon = true;
+
+            if (QuestController.instance != null)
+            {
+                QuestController.instance.CompleteQuest("Ball Toss");
+            }
             GameOver("You Win... \n but at what cost. We no longer have bottles to store water, now " +
                      "our children are dehydrated and our plants don't have enough water to sustain themselves. " +
                      "We can longer survive the long summer");
@@ -116,7 +121,10 @@ public class BallGameSingleton : MonoBehaviour
     
     void ReturnToMainGame()
     {
-        SceneLoader.instance.ReturnToPreviousScene();
+        if (SceneLoader.instance != null)
+        {
+            SceneLoader.instance.ReturnToPreviousScene();
+        }
     }
     
 }

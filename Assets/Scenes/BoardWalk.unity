@@ -233,37 +233,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestController
   inactiveQuests:
-  - name: Find Mom
+  - name: Fishing
     onStart:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1482474371}
-          m_TargetAssemblyTypeName: NPC, Assembly-CSharp
-          m_MethodName: ChangeNPCDialogue
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: b06631022c26ede4ea032027ba91ab77, type: 2}
-            m_ObjectArgumentAssemblyTypeName: NPCDialogue, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     onComplete:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1482474371}
-          m_TargetAssemblyTypeName: NPC, Assembly-CSharp
-          m_MethodName: ChangeNPCDialogue
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 8b2dc54cb5a7b0c41a12f636a1bbb7a4, type: 2}
-            m_ObjectArgumentAssemblyTypeName: NPCDialogue, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
+  - name: Whack-A-Mole
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Ball Toss
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Ice Cream Stack
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Test of Strength
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
   activeQuests: []
   completedQuests: []
 --- !u!1 &369791371
@@ -1502,17 +1506,6 @@ Transform:
   - {fileID: 2068528430}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1482474371 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -4353515683612476775, guid: dc35c1881d18f47b5ad6ac6c5df80254, type: 3}
-  m_PrefabInstance: {fileID: 1210748896}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48d2bb3798e924f0c9e98cb74ddef9b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1001 &1565945918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10248,7 +10241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[9].second.m_AnimationSpeed
-      value: 3.0000002
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[10].second.m_AnimationSpeed
@@ -10324,7 +10317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[28].second.m_AnimationSpeed
-      value: 3
+      value: 3.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[29].second.m_AnimationSpeed
@@ -10340,11 +10333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[32].second.m_AnimationSpeed
-      value: 3
+      value: 3.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[33].second.m_AnimationSpeed
-      value: 3.0000002
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[34].second.m_AnimationSpeed
@@ -10380,11 +10373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[42].second.m_AnimationSpeed
-      value: 3
+      value: 3.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[43].second.m_AnimationSpeed
-      value: 3.0000002
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[44].second.m_AnimationSpeed
@@ -10392,7 +10385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[45].second.m_AnimationSpeed
-      value: 3.0000002
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 638308548952118475, guid: 4f9da8b3b5c4899419c8446e4749e731, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[46].second.m_AnimationSpeed

@@ -45,7 +45,10 @@ public class TestOfStrength : MonoBehaviour
 
     void Start()
     {
-        returnButton.onClick.AddListener(SceneLoader.instance.ReturnToPreviousScene);
+        if (SceneLoader.instance != null)
+        {
+            returnButton.onClick.AddListener(SceneLoader.instance.ReturnToPreviousScene);
+        }
         powerBarRenderer = powerBar.GetComponent<SpriteRenderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -134,8 +137,13 @@ public class TestOfStrength : MonoBehaviour
     void SetStrengthText(float power)
     {
         if (power > 90)
+        {
             strengthText.text = "WOW YOURE PRETTY STRONG";
-        else if (power > 70)
+            if (QuestController.instance != null)
+            {
+                QuestController.instance.CompleteQuest("Test of Strength");
+            }
+        } else if (power > 70)
             strengthText.text = "PrEtTY GOoD But COUld be BEtteR";
         else if (power > 50)
             strengthText.text = "C'MON ARE YOU EVEN TRYING";

@@ -199,6 +199,10 @@ public class FishingManager : MonoBehaviour
         if (fishCaught == 3)
         {
             endScreenText.text = "YOU WIN!";
+            if (QuestController.instance != null)
+            {
+                QuestController.instance.CompleteQuest("Fishing");
+            }
         } else
         {
             endScreenText.text = "I shall starve for one thousand nights. I must kill a child to sustain myself tonight, and the next night, and so on...";

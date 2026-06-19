@@ -113,6 +113,11 @@ public class IceCreamStack : MonoBehaviour {
 
         returnText.text = "I Guess this is good enough of a stack";
         returnPanel.SetActive(true);
+
+        if (QuestController.instance != null)
+        {
+            QuestController.instance.CompleteQuest("Ice Cream Stack");
+        }
     }
 
     public void FailGame()
@@ -231,7 +236,10 @@ public class IceCreamStack : MonoBehaviour {
     
     void ReturnToMainGame()
     {
-        SceneLoader.instance.ReturnToPreviousScene();
+        if (SceneLoader.instance != null)
+        {
+            SceneLoader.instance.ReturnToPreviousScene();
+        }
     }
 
 }

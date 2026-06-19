@@ -74,7 +74,11 @@ public class WhackAMoleManager : MonoBehaviour
         scoreTextMesh = scoreText.GetComponent<TMP_Text>();
         timeTextMesh = timeText.GetComponent<TMP_Text>();
         startGameButton.onClick.AddListener(StartGame);
-        returnButton.onClick.AddListener(SceneLoader.instance.ReturnToPreviousScene);
+
+        if (SceneLoader.instance != null)
+        {
+            returnButton.onClick.AddListener(SceneLoader.instance.ReturnToPreviousScene);
+        }
         HideEndScreen();
         UpdateScore(0);
         UpdateTime(TIME_LIMIT);
@@ -185,6 +189,10 @@ public class WhackAMoleManager : MonoBehaviour
 
         if (score >= GOAL_SCORE)
         {
+            if (QuestController.instance != null)
+            {
+                QuestController.instance.CompleteQuest("Whack-A-Mole");
+            }
             ShowEndScreen("YOU WIN!");
         } else
         {
