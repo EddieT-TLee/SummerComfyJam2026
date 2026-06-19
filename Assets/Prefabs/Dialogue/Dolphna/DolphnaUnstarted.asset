@@ -22,7 +22,7 @@ MonoBehaviour:
   - text: You look strong and capable!
     portraitIndex: 0
     choices: []
-  - text: Can you help me with my pesky mole problem?
+  - text: Can you help me with my pesky mole problem? I'll reward handsomely!
     portraitIndex: 0
     choices:
     - resetDialogue: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
         dialogue: {fileID: 0}
       - actionType: 1
         questName: Whack-A-Mole
-        dialogue: {fileID: 0}
+        dialogue: {fileID: 11400000, guid: 2d83257ac454aff459c95714a4d580d8, type: 2}
       choiceText: Sure!
       portraitIndex: 0
       chudLines:
@@ -46,7 +46,7 @@ MonoBehaviour:
       - text: Please beat it for me!
         portraitIndex: 0
         choices: []
-    - resetDialogue: 0
+    - resetDialogue: 1
       onChoiceSelected: []
       choiceText: '*walk away*'
       portraitIndex: 0

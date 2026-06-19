@@ -12,7 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
   m_Name: DolphnaCompleted
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  npcName: 
-  npcPortraitSprites: []
-  dialogueLines: []
+  npcName: Dolphna
+  npcPortraitSprites:
+  - {fileID: -3574535371527339200, guid: 9c5ebf7871b22944ba41f8e199b63210, type: 3}
+  dialogueLines:
+  - text: Wow, you did it!
+    portraitIndex: 0
+    choices: []
+  - text: Thanks for helping me with dinner! ...I mean, for beating the high score!
+    portraitIndex: 0
+    choices:
+    - resetDialogue: 1
+      onChoiceSelected: []
+      choiceText: Dinner?
+      portraitIndex: 0
+      chudLines:
+      - text: Oh... you got me! Can't let good protein go to waste!
+        portraitIndex: 0
+        choices: []
+      - text: 'I know Typhorse will be happy about this! '
+        portraitIndex: 0
+        choices: []
+    - resetDialogue: 0
+      onChoiceSelected: []
+      choiceText: About that reward... where's my mom?
+      portraitIndex: 0
+      chudLines:
+      - text: Of course! I know where your mom is!
+        portraitIndex: 0
+        choices: []
+      - text: Since you helped me, I'll tell you another code number.
+        portraitIndex: 0
+        choices: []
+      - text: It's... Zero... I think?
+        portraitIndex: 0
+        choices:
+        - resetDialogue: 1
+          onChoiceSelected: []
+          choiceText: Thanks?
+          portraitIndex: 0
+          chudLines:
+          - text: You're welcome!
+            portraitIndex: 0
+            choices: []
   typingSpeed: 0.05

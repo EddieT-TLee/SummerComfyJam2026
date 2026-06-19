@@ -19,7 +19,7 @@ MonoBehaviour:
   - text: Go on and get those moles in the bar! Treat 'em like they were real!
     portraitIndex: 0
     choices: []
-  - text: I think they're fake at least...
+  - text: I mean... hit 'em hard!
     portraitIndex: 0
     choices: []
   typingSpeed: 0.05
