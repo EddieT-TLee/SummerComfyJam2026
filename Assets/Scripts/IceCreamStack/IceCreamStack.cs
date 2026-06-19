@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class IceCreamStack : MonoBehaviour {
     [Header("Ice Cream Game Object Stuff")]
@@ -19,6 +22,13 @@ public class IceCreamStack : MonoBehaviour {
     [SerializeField] private int startingLives = 3;
     [SerializeField] private RectTransform livesCounter;
     [SerializeField] private Sprite lifeIconSprite;
+
+    [Header("UI Stuff")]
+    [SerializeField] private GameObject instructionPanel;
+    [SerializeField] private GameObject returnPanel;
+    [SerializeField] private TMP_Text returnText;
+    [SerializeField] private Button ReturnButton;
+
     
     private Vector2 lifeIconSize = new Vector2(64f, 64f);
 
@@ -40,7 +50,12 @@ public class IceCreamStack : MonoBehaviour {
 
     private const int WinningScoop = 11;
     private int scoopsStacked = 0;
-    
+
+
+    private void Awake()
+    {
+        ReturnButton.onClick.AddListener(ReturnToMainGame);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
@@ -51,7 +66,7 @@ public class IceCreamStack : MonoBehaviour {
         coneSortingOrder = iceCreamCone.GetComponent<SpriteRenderer>().sortingOrder;
         CreateLifeIcons();
         UpdateLivesCounter();
-        SpawnNewScoop();
+        
         
     }
 
@@ -95,13 +110,18 @@ public class IceCreamStack : MonoBehaviour {
     {
         gameWon = true;
         currentScoop = null;
-        Debug.Log("You win! Perfect ice cream cone!");
+
+        returnText.text = "I Guess this is good enough of a stack";
+        returnPanel.SetActive(true);
     }
 
     public void FailGame()
     {
         gameFailed = true;
         currentScoop = null;
+        
+        returnText.text = "How?!?!?! Literally just put the Ice cream in the cone bro";
+        returnPanel.SetActive(true);
     }
 
     private void RandomizeIceCreamOrder()
@@ -200,6 +220,18 @@ public class IceCreamStack : MonoBehaviour {
         {
             lifeIcons[i].enabled = i < lives;
         }
+    }
+    
+    
+    public void StartGame()
+    {
+        instructionPanel.SetActive(false);
+        SpawnNewScoop();
+    }
+    
+    void ReturnToMainGame()
+    {
+        SceneLoader.instance.ReturnToPreviousScene();
     }
 
 }
