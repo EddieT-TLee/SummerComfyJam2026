@@ -244,31 +244,28 @@ public class Keypad : MonoBehaviour, IInteractable
     }
     
     private IEnumerator EndSequence()
-    {        
-        DeleteAllPersistentObjects();
+    {         
         AsyncOperation load = SceneManager.LoadSceneAsync("TitleScreen");
         
         while (!load.isDone) yield return null;
+        
+        yield return new WaitForSeconds(0.5f);
 
         yield return StartCoroutine(ScreenFader.instance.FadeIn());
-
-        yield return new WaitForSeconds(0.5f);
+        
+        DeleteAllPersistentObjects();
     }
 
     public void DeleteAllPersistentObjects()
     {
-        Scene[] allScenes = SceneManager.GetAllScenes();
-        
-        foreach (Scene scene in allScenes)
+        GameObject temp = new GameObject("TempSceneFinder");
+        DontDestroyOnLoad(temp);
+        Scene ddolScene = temp.scene;
+        DestroyImmediate(temp);
+
+        foreach (GameObject obj in ddolScene.GetRootGameObjects())
         {
-            if (scene.name == "DontDestroyOnLoad")
-            {
-                GameObject[] rootObjects = scene.GetRootGameObjects();
-                foreach (GameObject obj in rootObjects)
-                {
-                    Destroy(obj);
-                }
-            }
+            DestroyImmediate(obj);
         }
     }
 }
