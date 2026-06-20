@@ -48,16 +48,16 @@ MonoBehaviour:
   sceneMusics:
   - sceneName: Beach
     music: {fileID: 8300000, guid: a0e51b92cc1fb3441aa26f4838a8a2ef, type: 3}
-    persistThroughSceneChange: 0
-  - sceneName: Boardwalk
+    persistThroughSceneChange: 1
+  - sceneName: BoardWalk
     music: {fileID: 8300000, guid: 92d43666b5b092848841fa4a06df3ac5, type: 3}
-    persistThroughSceneChange: 0
+    persistThroughSceneChange: 1
   - sceneName: Carnival
     music: {fileID: 8300000, guid: a94895aa69261494a9ace2b052f20d54, type: 3}
-    persistThroughSceneChange: 0
-  - sceneName: Carnival
-    music: {fileID: 8300000, guid: a94895aa69261494a9ace2b052f20d54, type: 3}
-    persistThroughSceneChange: 0
+    persistThroughSceneChange: 1
+  - sceneName: CruiseShip
+    music: {fileID: 8300000, guid: 132f28e70f0e3a8439769d60497fc546, type: 3}
+    persistThroughSceneChange: 1
   transitionDuration: 1
 --- !u!82 &787618067487000400
 AudioSource:
@@ -74,7 +74,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

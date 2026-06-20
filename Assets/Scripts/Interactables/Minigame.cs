@@ -5,19 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class Minigame : MonoBehaviour, IInteractable
 {
+    [Header("Quest")]
+    public string questName;
+    public bool questActive;
+
+    [Header("Minigame")]
     public string minigameSceneString;
     private bool isDialogueActive;
     private DialogueController dialogueUI; // Used to show player options to start game
-
+    private GameObject interactionIndicator;
 
     private void Start()
     {
         dialogueUI = DialogueController.instance;
+        interactionIndicator = transform.GetChild(0).gameObject;
+    }
+
+    private void Update()
+    {
+        interactionIndicator.SetActive(CanInteract());
     }
 
     public bool CanInteract()
     {
-        return !isDialogueActive;
+        return questActive && !isDialogueActive;
     }
 
     public void Interact()

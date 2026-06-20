@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public enum QuestStatus
 {
@@ -52,6 +53,9 @@ public class QuestController : MonoBehaviour
 
         inactiveQuests.Remove(quest);
         activeQuests.Add(quest);
+
+        UpdateMinigames(questName);
+
         quest.onStart?.Invoke();
     }
 
@@ -68,6 +72,8 @@ public class QuestController : MonoBehaviour
         
         activeQuests.Remove(quest);
         completedQuests.Add(quest);
+
+        UpdateMinigames(questName);
         quest.onComplete?.Invoke();
     }
 
@@ -84,5 +90,17 @@ public class QuestController : MonoBehaviour
         if (completedQuests.Find(q => q.name == questName) != null) return QuestStatus.Completed;
 
         throw new Exception("Quest is not in QuestController");
+    }
+
+    private void UpdateMinigames(string questName)
+    {
+        Minigame[] minigames = GameObject.FindObjectsByType<Minigame>();
+
+        foreach (Minigame minigame in minigames)
+        {
+            if (minigame.questName != questName) continue;
+
+            minigame.questActive = GetQuestStatus(questName) == QuestStatus.Active;
+        }
     }
 }

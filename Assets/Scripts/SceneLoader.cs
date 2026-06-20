@@ -15,6 +15,7 @@ public class SceneLoader : MonoBehaviour
         if (instance != null && instance != this)
         {
             Destroy(this);
+            return;
         }
 
         instance = this;
@@ -33,6 +34,7 @@ public class SceneLoader : MonoBehaviour
     /// <param name="newSceneName">Scene to load additively</param>
     public void SwitchToNewAdditiveScene(string newSceneName)
     {
+        MusicController.instance.StopMusic();
         StartCoroutine(LoadAndHide(newSceneName));
     }
 

@@ -44,7 +44,7 @@ public class MusicController : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-   private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         bool hasNewMusic = sceneMusicPairs.TryGetValue(scene.name, out SceneMusic newSceneMusic);
 
@@ -77,6 +77,16 @@ public class MusicController : MonoBehaviour
         }
 
         currentSceneMusic = newSceneMusic;
+    }
+
+    public void StopMusic()
+    {
+        audioSource.Stop();
+        currentSceneMusic = null;
+        if (transitionCoroutine != null)
+        {
+            StopCoroutine(transitionCoroutine);
+        }
     }
 
     private void TransitionToMusic(AudioClip clip)

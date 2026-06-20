@@ -80,6 +80,8 @@ public class Keypad : MonoBehaviour, IInteractable
     private bool isTyping;
     private bool malumaActive = false;
 
+    private int dialogueCanvasSortingOrder;
+
 
 
     void Start()
@@ -160,11 +162,15 @@ public class Keypad : MonoBehaviour, IInteractable
     
     IEnumerator OpenMalumaDialogue()
     {
+        MusicController.instance.StopMusic();
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(ScreenFader.instance.FadeOut());
+        
+        // Make sure dialogue is above the screen fader canvas
+        Canvas dialogueCanvas = dialogueUI.dialoguePanel.GetComponentInParent<Canvas>();
+        dialogueCanvasSortingOrder = dialogueCanvas.sortingOrder;
+        dialogueCanvas.sortingOrder = ScreenFader.instance.fadeImage.GetComponentInParent<Canvas>().sortingOrder + 1;
 
-
-        keypad.SetActive(false);
         keypad.SetActive(false);
         isKeypadActive = false;
         currentCombination = "";
@@ -229,22 +235,24 @@ public class Keypad : MonoBehaviour, IInteractable
         dialogueUI.SetDialogueText("");
         dialogueUI.ShowDialogueUI(false);
         
+        // Make sure dialogue canvas returns to original sorting order
+        Canvas dialogueCanvas = dialogueUI.dialoguePanel.GetComponentInParent<Canvas>();
+        dialogueCanvas.sortingOrder = dialogueCanvasSortingOrder;
+        
         // End Sequence
         StartCoroutine(EndSequence());
     }
     
     private IEnumerator EndSequence()
-    {
-        yield return StartCoroutine(ScreenFader.instance.FadeIn());
-
-        yield return new WaitForSeconds(0.5f);
-        
+    {        
         DeleteAllPersistentObjects();
         AsyncOperation load = SceneManager.LoadSceneAsync("TitleScreen");
         
         while (!load.isDone) yield return null;
 
-        yield return StartCoroutine(ScreenFader.instance.FadeOut());
+        yield return StartCoroutine(ScreenFader.instance.FadeIn());
+
+        yield return new WaitForSeconds(0.5f);
     }
 
     public void DeleteAllPersistentObjects()
