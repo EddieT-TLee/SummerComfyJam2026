@@ -1536,8 +1536,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6347990956110559107, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347990956110559107, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347990956110559107, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartFadeIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347990956110559107, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScreenFader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347990956110559107, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_text
