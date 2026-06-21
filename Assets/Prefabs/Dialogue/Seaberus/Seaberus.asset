@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: Seaberus
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Seaberus
+  npcPortraitSprites:
+  - {fileID: -2459561429304158236, guid: 22d22eefc06e1492b9b2f0fbfc960113, type: 3}
+  dialogueLines:
+  - text: Look kid I don't know where your mom is
+    portraitIndex: 0
+    choices: []
+  - text: Or the code to your room on the cruise
+    portraitIndex: 0
+    choices: []
+  - text: Maybe one of the my carnies at the carnival know somethin
+    portraitIndex: 0
+    choices: []
+  - text: They're always up to no good when they're off the clock
+    portraitIndex: 0
+    choices: []
+  - text: Now shoo
+    portraitIndex: 0
+    choices: []
+  typingSpeed: 0.05

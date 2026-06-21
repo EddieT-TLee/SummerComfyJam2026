@@ -16,10 +16,17 @@ MonoBehaviour:
   npcPortraitSprites:
   - {fileID: -5658968404288830900, guid: 50c91c6482b27864ab05a204b2a9b41b, type: 3}
   dialogueLines:
-  - text: Did you know goofy dies in the second Kingdom Hearts game.
+  - text: Konichiwhatsup gumperton
     portraitIndex: 0
     choices: []
-  - text: Ooga booga
+  - text: Every time a deck of 52 cards is thoroughly shuffled,
+    portraitIndex: 0
+    choices: []
+  - text: ' it is almost certain that the resulting order has never existed before
+      in human history and never will again.'
+    portraitIndex: 0
+    choices: []
+  - text: Also that the code is somewhere in the digits of pi?
     portraitIndex: 0
     choices: []
   typingSpeed: 0.05

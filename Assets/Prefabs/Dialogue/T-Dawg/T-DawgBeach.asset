@@ -21,8 +21,11 @@ MonoBehaviour:
       Morris!'
     portraitIndex: 0
     choices: []
-  - text: "Also did you know that you can obtain orpheos telos by maxxing out all
-      of the \nSocial Links in Persona 3 Reload?"
+  - text: ' Or maybe just stick to T-Dawg '
+    portraitIndex: 0
+    choices: []
+  - text: Did you that pressing 0 with vim motions moves you to the beginning of
+      a line.
     portraitIndex: 0
     choices: []
   typingSpeed: 0.05

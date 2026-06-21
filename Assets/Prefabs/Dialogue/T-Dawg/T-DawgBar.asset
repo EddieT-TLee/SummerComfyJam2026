@@ -16,6 +16,9 @@ MonoBehaviour:
   npcPortraitSprites:
   - {fileID: -5658968404288830900, guid: 50c91c6482b27864ab05a204b2a9b41b, type: 3}
   dialogueLines:
+  - text: Heya friend nice to see you around the island
+    portraitIndex: 0
+    choices: []
   - text: 'Did you know that a platypus can turn
 
       turquoise under UV lighting?'

@@ -19,7 +19,19 @@ MonoBehaviour:
   - text: Gumpy in da alley
     portraitIndex: 0
     choices: []
+  - text: What they doing here
+    portraitIndex: 0
+    choices: []
   - text: They they doing here
+    portraitIndex: 0
+    choices: []
+  - text: Since its summer here is a cool Sumer fact
+    portraitIndex: 0
+    choices: []
+  - text: Sumerian math and measurements are still used today
+    portraitIndex: 0
+    choices: []
+  - text: Anyway the code is probably something like 759317938479813
     portraitIndex: 0
     choices: []
   typingSpeed: 0.05

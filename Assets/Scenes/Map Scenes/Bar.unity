@@ -8663,7 +8663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 839961830870300789, guid: 2241d8040e68f9c458764b2a9f2fe3bf, type: 3}
       propertyPath: m_Name
-      value: Whack-a-Mole Variant
+      value: Whack-a-Mole
       objectReference: {fileID: 0}
     - target: {fileID: 5447015575191934172, guid: 2241d8040e68f9c458764b2a9f2fe3bf, type: 3}
       propertyPath: m_SortingLayer
