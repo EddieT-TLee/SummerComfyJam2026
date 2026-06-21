@@ -19,6 +19,9 @@ public class Minigame : MonoBehaviour, IInteractable
     {
         dialogueUI = DialogueController.instance;
         interactionIndicator = transform.GetChild(0).gameObject;
+        
+        if(QuestController.instance.GetQuestStatus(questName) == QuestStatus.Active)
+            questActive = true;
     }
 
     private void Update()

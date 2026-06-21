@@ -27,7 +27,7 @@ MonoBehaviour:
     choices:
     - resetDialogue: 0
       onChoiceSelected: []
-      choiceText: where my mom at
+      choiceText: "where \nmy \nmom \nat"
       portraitIndex: 0
       chudLines:
       - text: Maybe you should get a drink at the bar.

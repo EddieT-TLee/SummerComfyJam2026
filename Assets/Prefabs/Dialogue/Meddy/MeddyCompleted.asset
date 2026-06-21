@@ -24,7 +24,7 @@ MonoBehaviour:
     choices:
     - resetDialogue: 0
       onChoiceSelected: []
-      choiceText: So about my mom...
+      choiceText: "So\nabout \nmy \nmom..."
       portraitIndex: 0
       chudLines:
       - text: Oh yeah, the clue I promised you. Uhh thinking of the number zero.
@@ -38,7 +38,7 @@ MonoBehaviour:
         choices: []
     - resetDialogue: 1
       onChoiceSelected: []
-      choiceText: 'I''m out of here '
+      choiceText: "I'm\nout \nof here "
       portraitIndex: 0
       chudLines:
       - text: What ever not like I needed any more info about mom

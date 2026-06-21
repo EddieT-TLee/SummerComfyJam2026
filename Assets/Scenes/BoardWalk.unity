@@ -1071,6 +1071,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 16e9357d9ce794df2913d241c4969af2, type: 2}
     - target: {fileID: 9034351683113106578, guid: 298a882a9bfb94c82bff6ce2b88423aa, type: 3}
+      propertyPath: questStartedDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: c1352ea1495e84db0aae5c8ada29bc96, type: 2}
+    - target: {fileID: 9034351683113106578, guid: 298a882a9bfb94c82bff6ce2b88423aa, type: 3}
       propertyPath: questCompletedDialogueData
       value: 
       objectReference: {fileID: 11400000, guid: 53e03746c81c24bad9522144c73f4d17, type: 2}

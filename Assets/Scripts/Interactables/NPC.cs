@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPC : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
+    public NPCDialogue questStartedDialogue;
     public NPCDialogue questCompletedDialogueData;
     public string questName;
     private bool questCompleted = false;
@@ -31,6 +32,10 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 questCompleted = true;
                 ApplyDialogueData(questCompletedDialogueData);
+            } else if (QuestController.instance != null &&
+                       QuestController.instance.GetQuestStatus(questName) == QuestStatus.Active)
+            {
+                ApplyDialogueData(questStartedDialogue);
             }
         }
         catch (System.Exception)

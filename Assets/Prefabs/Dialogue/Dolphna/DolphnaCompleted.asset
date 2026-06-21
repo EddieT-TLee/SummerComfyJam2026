@@ -35,7 +35,7 @@ MonoBehaviour:
         choices: []
     - resetDialogue: 0
       onChoiceSelected: []
-      choiceText: About that reward... where's my mom?
+      choiceText: "where's \nmy \nmom?"
       portraitIndex: 0
       chudLines:
       - text: Of course! I know where your mom is!

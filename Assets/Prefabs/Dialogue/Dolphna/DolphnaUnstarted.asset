@@ -48,7 +48,7 @@ MonoBehaviour:
         choices: []
     - resetDialogue: 1
       onChoiceSelected: []
-      choiceText: '*walk away*'
+      choiceText: "*walk \naway*"
       portraitIndex: 0
       chudLines:
       - text: Oh...

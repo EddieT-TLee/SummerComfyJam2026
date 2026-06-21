@@ -30,7 +30,7 @@ MonoBehaviour:
       - actionType: 1
         questName: 
         dialogue: {fileID: 11400000, guid: 2f21fb4d33a4e4b1fa2e2787919671a0, type: 2}
-      choiceText: I got this!
+      choiceText: "I \ngot \nthis!"
       portraitIndex: 0
       chudLines:
       - text: Heck yeah Brother
@@ -41,7 +41,7 @@ MonoBehaviour:
         choices: []
     - resetDialogue: 1
       onChoiceSelected: []
-      choiceText: "Nah, i\u2019m not strong"
+      choiceText: "Nah, \nI\u2019m \nnot\nstrong"
       portraitIndex: 0
       chudLines:
       - text: Not with that attitude
