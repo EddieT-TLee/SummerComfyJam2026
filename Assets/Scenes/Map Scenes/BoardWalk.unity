@@ -127,14 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2409407849785042324, guid: 0d90ae3ddc67351469354a7da6f03a9a, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2409407849785042324, guid: 0d90ae3ddc67351469354a7da6f03a9a, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 8300000, guid: 9b26437d21211f844a4c78149593cd38, type: 3}
     - target: {fileID: 5239966463156953794, guid: 0d90ae3ddc67351469354a7da6f03a9a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.46
@@ -178,22 +170,6 @@ PrefabInstance:
     - target: {fileID: 7496286552449458022, guid: 0d90ae3ddc67351469354a7da6f03a9a, type: 3}
       propertyPath: m_Name
       value: Ocean Noise
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117669218286007744, guid: 0d90ae3ddc67351469354a7da6f03a9a, type: 3}
-      propertyPath: m_Size.x
-      value: 27.14065
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117669218286007744, guid: 0d90ae3ddc67351469354a7da6f03a9a, type: 3}
-      propertyPath: m_Size.y
-      value: 3.217499
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117669218286007744, guid: 0d90ae3ddc67351469354a7da6f03a9a, type: 3}
-      propertyPath: m_Offset.x
-      value: -5.0416555
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117669218286007744, guid: 0d90ae3ddc67351469354a7da6f03a9a, type: 3}
-      propertyPath: m_Offset.y
-      value: -1.075251
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -328,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4066509381417239396, guid: 7c8ef5ff7c924ca45abe41c8ea567be9, type: 3}
       propertyPath: m_Name
-      value: IceCreamStack
+      value: Ice Cream Stacking
       objectReference: {fileID: 0}
     - target: {fileID: 4837996447413138810, guid: 7c8ef5ff7c924ca45abe41c8ea567be9, type: 3}
       propertyPath: m_Size.x

@@ -18,7 +18,6 @@ public class ScreenFader : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
 
         SetAlpha(0f);
     }

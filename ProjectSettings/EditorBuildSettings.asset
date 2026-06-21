@@ -44,5 +44,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/TestOfStrength.unity
     guid: f7d544dbb4d9d884782c2b997ad71b47
+  - enabled: 1
+    path: Assets/Scenes/Intro Cutscene.unity
+    guid: 32d0631eb6820f14384775f01f966514
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

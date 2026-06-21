@@ -13,6 +13,6 @@ public class StartGame : MonoBehaviour
 
     private void GoToStartScene()
     {
-        SceneManager.LoadScene("Beach");
+        SceneManager.LoadScene("Intro Cutscene");
     }
 }
