@@ -28,14 +28,12 @@ public class BallGameSingleton : MonoBehaviour
 
     private int bottlesOut;
     private GameObject currentBall;
-  
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {

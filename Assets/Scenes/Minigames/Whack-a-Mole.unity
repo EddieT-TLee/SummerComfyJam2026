@@ -925,6 +925,7 @@ MonoBehaviour:
   endScreen: {fileID: 1639829436}
   endScreenText: {fileID: 1902946508}
   returnButton: {fileID: 1413928249}
+  cam: {fileID: 1875252773}
   totalTimeRemaining: 0
 --- !u!4 &1554348505
 Transform:

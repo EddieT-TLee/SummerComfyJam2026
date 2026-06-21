@@ -18,7 +18,7 @@ public class WhackAMoleManager : MonoBehaviour
 
     [SerializeField]
     private Mole molePrefab;
-    private string moleTag;
+    private string moleTag = "Mole";
     [SerializeField]
     private int moleCount;
 
@@ -45,6 +45,7 @@ public class WhackAMoleManager : MonoBehaviour
     [SerializeField]
     private Button returnButton;
 
+    [SerializeField]
     private Camera cam;
     private Mouse mouse;
 
@@ -65,8 +66,6 @@ public class WhackAMoleManager : MonoBehaviour
         {
             instance = this;
         }
-
-        cam = Camera.main;
     }
 
     private void Start()
@@ -79,6 +78,7 @@ public class WhackAMoleManager : MonoBehaviour
         {
             returnButton.onClick.AddListener(SceneLoader.instance.ReturnToPreviousScene);
         }
+
         HideEndScreen();
         UpdateScore(0);
         UpdateTime(TIME_LIMIT);
@@ -191,7 +191,7 @@ public class WhackAMoleManager : MonoBehaviour
         {
             if (QuestController.instance != null)
             {
-                QuestController.instance.CompleteQuest("Whack-A-Mole");
+                QuestController.instance.CompleteQuest("WhackAMole");
             }
             ShowEndScreen("YOU WIN!");
         } else

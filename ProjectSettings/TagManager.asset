@@ -12,6 +12,7 @@ TagManager:
   - Bottle
   - ContainmentArea
   - Manager
+  - Mole
   layers:
   - Default
   - TransparentFX
