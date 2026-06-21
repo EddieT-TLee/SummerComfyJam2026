@@ -484,11 +484,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1223535242}
+  m_Father: {fileID: 463150875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21, y: 0}
+  m_AnchoredPosition: {x: -8, y: -0.99998474}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459331715
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_text: 'Balls Left: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
-  m_sharedMaterial: {fileID: 1432964897240027525, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+  m_sharedMaterial: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -591,6 +591,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459331713}
   m_CullTransparentMesh: 1
+--- !u!1 &463150874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463150875}
+  - component: {fileID: 463150877}
+  - component: {fileID: 463150876}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &463150875
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463150874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 459331714}
+  m_Father: {fileID: 1567775226}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -259.4011, y: 163}
+  m_SizeDelta: {x: -553.4329, y: -382.84}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &463150876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463150874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 6011873786046320149, guid: 121ab74a0dac8a34a904653af6576e43, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &463150877
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463150874}
+  m_CullTransparentMesh: 1
 --- !u!1001 &594302083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,12 +677,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_text
-      value: 'Click to drop the ice cream scoop and aim for the cone.
+      value: 'Click and drag to throw the ball.
 
 
-        Stack
-        yo shit as high as you can.'
+        Try to knock over those
+        bottles without breaking them.'
       objectReference: {fileID: 0}
+    - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 5491133471319755256, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_Name
       value: InstructionPanel
@@ -678,7 +758,7 @@ PrefabInstance:
     - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1432964897240027525, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -1308,82 +1388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5ae05b0f1f19447808073d53d956cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1223535241
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1223535242}
-  - component: {fileID: 1223535244}
-  - component: {fileID: 1223535243}
-  m_Layer: 5
-  m_Name: Panel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1223535242
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223535241}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 459331714}
-  m_Father: {fileID: 1567775226}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -337, y: 222.04}
-  m_SizeDelta: {x: -724.2814, y: -476.6729}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1223535243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223535241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 6011873786046320149, guid: 121ab74a0dac8a34a904653af6576e43, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1223535244
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223535241}
-  m_CullTransparentMesh: 1
 --- !u!1 &1395659183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,7 +1737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1780,7 +1784,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1223535242}
+  - {fileID: 463150875}
   - {fileID: 594302084}
   - {fileID: 637374566}
   m_Father: {fileID: 0}

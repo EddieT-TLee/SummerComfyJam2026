@@ -3,29 +3,25 @@ using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
 {
-    private Image borderBackgroundImage;
-
-    private GameObject fill;
-    private Image fillImage;
-
-    private RectTransform borderRect;
-    private RectTransform fillRect;
+    [SerializeField] private Image borderBackgroundImage;
+    [SerializeField] private GameObject fill;
+    [SerializeField] private Image fillImage;
+    [SerializeField] private RectTransform borderRect;
+    [SerializeField] private RectTransform fillRect;
 
     private float backgroundWidth;
     private float backgroundHeight;
-
     private Vector4 borders;
 
     public float progressValue = 0f;
 
     private void Start()
     {
-        borderBackgroundImage = GetComponent<Image>();
-        borderRect = GetComponent<RectTransform>();
-
-        fill = transform.GetChild(0).gameObject;
-        fillImage = fill.GetComponent<Image>();
-        fillRect = fill.GetComponent<RectTransform>();
+        if (borderBackgroundImage == null) borderBackgroundImage = GetComponent<Image>();
+        if (borderRect == null) borderRect = GetComponent<RectTransform>();
+        if (fill == null) fill = transform.GetChild(0).gameObject;
+        if (fillImage == null) fillImage = fill.GetComponent<Image>();
+        if (fillRect == null) fillRect = fill.GetComponent<RectTransform>();
 
         Canvas.ForceUpdateCanvases();
 
@@ -34,18 +30,16 @@ public class ProgressBar : MonoBehaviour
 
         Vector4 backgroundBorders = borderBackgroundImage.sprite != null ? borderBackgroundImage.sprite.border : Vector4.zero;
         float borderPixelsPerUnit = Mathf.Max(borderBackgroundImage.pixelsPerUnit, Mathf.Epsilon);
+
         borders = backgroundBorders / borderPixelsPerUnit;
 
         backgroundWidth = borderWidth - borders.x - borders.z;
-
         backgroundHeight = borderHeight - borders.y - borders.w;
 
         fillRect.anchorMin = new Vector2(0f, 0.5f);
         fillRect.anchorMax = new Vector2(0f, 0.5f);
         fillRect.pivot = new Vector2(0f, 0.5f);
-
         fillRect.anchoredPosition = new Vector2(borders.x, 0f);
-
         fillRect.sizeDelta = new Vector2(0f, backgroundHeight);
     }
 

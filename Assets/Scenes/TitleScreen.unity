@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 319, y: 76}
+  m_AnchoredPosition: {x: 270, y: 70}
   m_SizeDelta: {x: 226.86401, y: 231.3743}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &103178284
@@ -341,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1432964897240027525, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -425,7 +425,7 @@ PrefabInstance:
     - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1432964897240027525, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -492,11 +492,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8840336815031271681, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 8840336815031271681, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000002861
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8840336815031271681, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -545,6 +545,10 @@ PrefabInstance:
         Mouse is required
         for some minigames'
       objectReference: {fileID: 0}
+    - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 1320035152883367275, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -624,7 +628,7 @@ PrefabInstance:
     - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1432964897240027525, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -1001,7 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1161,7 +1165,7 @@ PrefabInstance:
     - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1432964897240027525, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
@@ -1339,7 +1343,7 @@ PrefabInstance:
     - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1432964897240027525, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -1578,7 +1582,7 @@ PrefabInstance:
     - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1432964897240027525, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 7080181503759061296, guid: b11b02b4d19969f4bbf39f1a2607f44d, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1

@@ -19,13 +19,14 @@ MonoBehaviour:
   - text: Why hello there, young one. Would you like a drink?
     portraitIndex: 0
     choices: []
-  - text: "I know atleast one digit from a carnie and that\u2019s all I got for ya."
+  - text: "I know at least one digit from a carnie and that\u2019s all I got for
+      ya."
     portraitIndex: 0
     choices: []
   - text: One of the numbers is... Zero.
     portraitIndex: 0
     choices: []
-  - text: ' Now go talk to other carnies for more info or something.'
+  - text: Now go talk to other carnies for more info or something.
     portraitIndex: 0
     choices: []
   - text: You want more help?

@@ -43,7 +43,7 @@ public class FishingManager : MonoBehaviour
     private Color neutralColor;
     [SerializeField]
     private Color winningColor;
-
+    
     private float fishCaughtProgress = 0.5f;
     private const float CATCH_TIME = 10f;
     private const float DECAY_TIME = 15f;
@@ -143,6 +143,7 @@ public class FishingManager : MonoBehaviour
 
     private void OnFishCaught()
     {
+        paused = true;
         fishCaught++;
 
         StartCoroutine(PlayFishCaughtAnimation());
@@ -157,7 +158,6 @@ public class FishingManager : MonoBehaviour
 
         ResetProgress();
         fishingMeter.ResetFishingMeter();
-        paused = true;
     }
 
     private IEnumerator PlayFishCaughtAnimation()

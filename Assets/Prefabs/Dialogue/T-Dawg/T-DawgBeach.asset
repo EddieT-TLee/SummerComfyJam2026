@@ -24,8 +24,8 @@ MonoBehaviour:
   - text: ' Or maybe just stick to T-Dawg '
     portraitIndex: 0
     choices: []
-  - text: Did you that pressing 0 with vim motions moves you to the beginning of
-      a line.
+  - text: Did you Know that pressing 0 with vim motions moves you to the beginning
+      of a line?
     portraitIndex: 0
     choices: []
   typingSpeed: 0.05

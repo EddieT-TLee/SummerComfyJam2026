@@ -1382,13 +1382,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_text
-      value: 'Click with your mouse at the right!
+      value: 'Click with your mouse at the right time !
 
 
 
-        Hit the Hammer to test
-        your strength at the right time!'
+        Hit the Hammer
+        to test your strength! Typhore Need you to get the highest score.'
       objectReference: {fileID: 0}
+    - target: {fileID: 414390826407424320, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 5491133471319755256, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_Name
       value: Instructions Screen
@@ -1484,11 +1488,15 @@ PrefabInstance:
     - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
     - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -8715664464611641346, guid: 0c471dfd4877bf74cbf5adbe7840ff40, type: 2}
+    - target: {fileID: 8413511608863530213, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8840336815031271681, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1519,7 +1527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8840336815031271681, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 193.4086
+      value: 217.1297
       objectReference: {fileID: 0}
     - target: {fileID: 8840336815031271681, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1555,7 +1563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8840336815031271681, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 11.8605
       objectReference: {fileID: 0}
     - target: {fileID: 8840336815031271681, guid: 8ed15e6ddb8e3cd43915ffa570a9f0a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

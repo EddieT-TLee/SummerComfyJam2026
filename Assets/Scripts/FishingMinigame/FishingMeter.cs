@@ -1,5 +1,3 @@
-
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -7,15 +5,13 @@ using Random = UnityEngine.Random;
 
 public class FishingMeter : MonoBehaviour
 {
-    private Image backgroundImage;
+    [SerializeField] private Image backgroundImage;
 
-    [SerializeField]
-    private GameObject safeZone;
-    private RectTransform safeZoneRect;
+    [SerializeField] private GameObject safeZone;
+    [SerializeField] private RectTransform safeZoneRect;
 
-    [SerializeField]
-    private GameObject indicator;
-    private RectTransform indicatorRect;
+    [SerializeField] private GameObject indicator;
+    [SerializeField] private RectTransform indicatorRect;
 
     private const float EPSILON = 0.001f;
 
@@ -42,24 +38,23 @@ public class FishingMeter : MonoBehaviour
 
     public bool zonesOverlapping = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        backgroundImage = GetComponent<Image>();
-        safeZoneRect = safeZone.GetComponent<RectTransform>();
-        indicatorRect = indicator.GetComponent<RectTransform>();
+        if (backgroundImage == null) backgroundImage = GetComponent<Image>();
+        if (safeZoneRect == null) safeZoneRect = safeZone.GetComponent<RectTransform>();
+        if (indicatorRect == null) indicatorRect = indicator.GetComponent<RectTransform>();
 
         Canvas.ForceUpdateCanvases();
         LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)transform);
 
         float backgroundWidth = backgroundImage.rectTransform.rect.width;
         float backgroundHeight = backgroundImage.rectTransform.rect.height;
-        
+
         Vector4 borders = backgroundImage.sprite.border;
         float borderPixelsPerUnit = Mathf.Max(backgroundImage.pixelsPerUnit, Mathf.Epsilon);
 
         borders /= borderPixelsPerUnit;
-        
+
         float safeZoneHeight = safeZoneRect.rect.height;
         float indicatorHeight = indicatorRect.rect.height;
 
@@ -76,7 +71,6 @@ public class FishingMeter : MonoBehaviour
         ResetFishingMeter();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Mouse.current != null)
@@ -92,7 +86,6 @@ public class FishingMeter : MonoBehaviour
 
         CheckIndicatorCollisions();
 
-        // Move the safe zone around to mess with the player
         if (timeTillMove <= 0)
         {
             if (!moving)
@@ -102,13 +95,14 @@ public class FishingMeter : MonoBehaviour
             }
 
             safeZoneRect.anchoredPosition = Vector2.MoveTowards(safeZoneRect.anchoredPosition, moveTo, SAFE_ZONE_SPEED * Time.deltaTime);
-            
+
             if (Vector2.Distance(safeZoneRect.anchoredPosition, moveTo) <= EPSILON)
             {
                 timeTillMove = Random.Range(MIN_WAIT_TIME, MAX_WAIT_TIME);
                 moving = false;
             }
-        } else
+        }
+        else
         {
             timeTillMove -= Time.deltaTime;
         }
@@ -134,16 +128,14 @@ public class FishingMeter : MonoBehaviour
     {
         if (safeZoneRect.anchoredPosition.y >= halfPoint)
         {
-            moveTo = new Vector2
-            (
+            moveTo = new Vector2(
                 safeZoneRect.anchoredPosition.x,
                 Random.Range(safeZoneLowerBound, halfPoint)
             );
         }
         else
         {
-            moveTo = new Vector2
-            (
+            moveTo = new Vector2(
                 safeZoneRect.anchoredPosition.x,
                 Random.Range(halfPoint, safeZoneUpperBound)
             );

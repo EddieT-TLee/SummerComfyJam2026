@@ -32,7 +32,7 @@ public class InteractionDetector : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         // Turns off that Icon and makes sure the player can no longer interact with the object in that range.
-        if (collision.TryGetComponent(out IInteractable interactable) && interactable.CanInteract())
+        if (collision.TryGetComponent(out IInteractable interactable))
         {
             interactableObject = null;
             interactionIcon.SetActive(false);

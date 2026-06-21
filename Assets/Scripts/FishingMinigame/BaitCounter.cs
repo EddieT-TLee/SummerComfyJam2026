@@ -11,12 +11,14 @@ public class BaitCounter : MonoBehaviour
     private readonly List<Image> baitImages = new List<Image>();
     public int bait = 5;
     
-    private void Awake()
+    private void Start()
     {
         HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
         RectTransform rect = GetComponent<RectTransform>();
         layoutGroup.childControlWidth = true;
         layoutGroup.childControlHeight = true;
+        
+        Canvas.ForceUpdateCanvases();
 
         bait = Mathf.Max(0, bait);
         baitImages.Clear();
