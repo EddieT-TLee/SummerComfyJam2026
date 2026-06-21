@@ -16,8 +16,13 @@ MonoBehaviour:
   npcPortraitSprites:
   - {fileID: 3208071742624857898, guid: 70cdb956685fa504eba02b1d5dbc3dcd, type: 3}
   dialogueLines:
-  - text: "I would totally do a flip right now,\nbut I glued myself to the ground.
-      \nOopsies."
+  - text: Sorry I don't got any funnel cake.
+    portraitIndex: 0
+    choices: []
+  - text: Someone who totally wasn't me ate it all.
+    portraitIndex: 0
+    choices: []
+  - text: I would totally do a flip right now,
     portraitIndex: 0
     choices: []
   - text: "but I glued myself to the ground. \n"

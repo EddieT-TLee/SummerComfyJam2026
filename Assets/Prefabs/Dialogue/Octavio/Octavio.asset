@@ -28,4 +28,14 @@ MonoBehaviour:
   - text: ' Now go talk to other carnies for more info or something.'
     portraitIndex: 0
     choices: []
+  - text: You want more help?
+    portraitIndex: 0
+    choices: []
+  - text: Geez... best thing I can tell ya is sometimes you have to try again if
+      you fail the first time.
+    portraitIndex: 0
+    choices: []
+  - text: 'Now go, I''ve got a buisness to run '
+    portraitIndex: 0
+    choices: []
   typingSpeed: 0.05

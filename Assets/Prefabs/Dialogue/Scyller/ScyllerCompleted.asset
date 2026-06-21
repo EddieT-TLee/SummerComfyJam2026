@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: ScyllerCompleted
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Scyller
+  npcPortraitSprites:
+  - {fileID: -9009517793015561529, guid: 5e92992b98ef9b14bb4f64ff24a0d3da, type: 3}
+  dialogueLines:
+  - text: Alright alright you're too bright!
+    portraitIndex: 0
+    choices: []
+  - text: Thanks for getting me my need dinner
+    portraitIndex: 0
+    choices: []
+  - text: What do you need Now I gotta cook my dinner soon?!
+    portraitIndex: 0
+    choices:
+    - resetDialogue: 0
+      onChoiceSelected: []
+      choiceText: where my mom at
+      portraitIndex: 0
+      chudLines:
+      - text: Maybe you should get a drink at the bar.
+        portraitIndex: 0
+        choices: []
+      - text: ' Maybe the bartender knows something about your mom.'
+        portraitIndex: 0
+        choices: []
+    - resetDialogue: 1
+      onChoiceSelected: []
+      choiceText: '*walk away*'
+      portraitIndex: 0
+      chudLines:
+      - text: whatever I guess
+        portraitIndex: 0
+        choices: []
+  typingSpeed: 0.05

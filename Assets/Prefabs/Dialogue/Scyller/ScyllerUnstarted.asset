@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: ScyllerUnstarted
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Scyller
+  npcPortraitSprites:
+  - {fileID: -9009517793015561529, guid: 5e92992b98ef9b14bb4f64ff24a0d3da, type: 3}
+  dialogueLines:
+  - text: '"well hello young traveller.'
+    portraitIndex: 0
+    choices: []
+  - text: tell me, are you afraid of the dark?
+    portraitIndex: 0
+    choices:
+    - resetDialogue: 1
+      onChoiceSelected: []
+      choiceText: uhh... yeah
+      portraitIndex: 0
+      chudLines:
+      - text: Boo!
+        portraitIndex: 0
+        choices: []
+    - resetDialogue: 0
+      onChoiceSelected:
+      - actionType: 0
+        questName: Fishing
+        dialogue: {fileID: 0}
+      - actionType: 1
+        questName: 
+        dialogue: {fileID: 11400000, guid: b5d3d7b655a81ea4cb669068d989f792, type: 2}
+      choiceText: NO!
+      portraitIndex: 0
+      chudLines:
+      - text: Oh uhh.... wrong?
+        portraitIndex: 0
+        choices: []
+      - text: Uh .. while you're here could you actually catch some fish for me?
+        portraitIndex: 0
+        choices: []
+      - text: This carnie salary isn't enough for me to sustain myself and I need
+          to catch fish for dinner.
+        portraitIndex: 0
+        choices: []
+      - text: But I don't got the time today since I had to do something for the
+          boss man
+        portraitIndex: 0
+        choices: []
+      - text: My fishing equipment is down there in the corner
+        portraitIndex: 0
+        choices: []
+  typingSpeed: 0.05

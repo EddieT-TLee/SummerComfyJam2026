@@ -28,7 +28,7 @@ MonoBehaviour:
     - resetDialogue: 0
       onChoiceSelected:
       - actionType: 0
-        questName: Whack-A-Mole
+        questName: WhackAMole
         dialogue: {fileID: 0}
       - actionType: 1
         questName: Whack-A-Mole

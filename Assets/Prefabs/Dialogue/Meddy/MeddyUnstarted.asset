@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739a7f53dfa9343f1bc9a391357c2bd1, type: 3}
+  m_Name: MeddyUnstarted
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Meddy
+  npcPortraitSprites:
+  - {fileID: -3151554110679755719, guid: 2e3641a57bbb67f4b9c55ca0a72376df, type: 3}
+  dialogueLines:
+  - text: Heehee hey there punk,
+    portraitIndex: 0
+    choices: []
+  - text: I heard you were looking for your mom,
+    portraitIndex: 0
+    choices: []
+  - text: I could give you a clue if you win my game.
+    portraitIndex: 0
+    choices:
+    - resetDialogue: 0
+      onChoiceSelected:
+      - actionType: 0
+        questName: Ball Toss
+        dialogue: {fileID: 0}
+      - actionType: 1
+        questName: 
+        dialogue: {fileID: 11400000, guid: 7498e97d6f37f4d44a919143e36590ae, type: 2}
+      choiceText: You're on!
+      portraitIndex: 0
+      chudLines:
+      - text: Thats the spirit!
+        portraitIndex: 0
+        choices: []
+      - text: Just go play my game down there at end of carnival
+        portraitIndex: 0
+        choices: []
+    - resetDialogue: 1
+      onChoiceSelected: []
+      choiceText: '*Walk away*'
+      portraitIndex: 0
+      chudLines:
+      - text: what???
+        portraitIndex: 0
+        choices: []
+      - text: Don't you want to know more about where your mom when?
+        portraitIndex: 0
+        choices: []
+  typingSpeed: 0.05

@@ -8756,6 +8756,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Whack-a-Mole Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5447015575191934172, guid: 2241d8040e68f9c458764b2a9f2fe3bf, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447015575191934172, guid: 2241d8040e68f9c458764b2a9f2fe3bf, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1324481803
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624935908785820680, guid: 2241d8040e68f9c458764b2a9f2fe3bf, type: 3}
+      propertyPath: questName
+      value: WhackAMole
+      objectReference: {fileID: 0}
     - target: {fileID: 8134350075660553835, guid: 2241d8040e68f9c458764b2a9f2fe3bf, type: 3}
       propertyPath: m_IsTrigger
       value: 0

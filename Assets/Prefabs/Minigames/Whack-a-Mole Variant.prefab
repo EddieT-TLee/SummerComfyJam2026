@@ -33,6 +33,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3049322125240120499, guid: 3493164417e224c7c837f8356ae54bc1, type: 3}
     - target: {fileID: 3161383071203868709, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
+      propertyPath: questName
+      value: Whack-a-Mole
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161383071203868709, guid: 3264f939f4ee00a4d8433a7b47653ad8, type: 3}
       propertyPath: minigameScene
       value: BallToss
       objectReference: {fileID: 0}
