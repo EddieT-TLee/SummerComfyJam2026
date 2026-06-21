@@ -22,7 +22,7 @@ MonoBehaviour:
   - text: Thanks for getting me my need dinner
     portraitIndex: 0
     choices: []
-  - text: What do you need Now I gotta cook my dinner soon?!
+  - text: What do you need now, I gotta cook my dinner soon?
     portraitIndex: 0
     choices:
     - resetDialogue: 0
