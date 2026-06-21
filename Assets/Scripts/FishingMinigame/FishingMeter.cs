@@ -27,7 +27,7 @@ public class FishingMeter : MonoBehaviour
     private float halfPoint;
 
     private Vector2 indicatorVelocity = Vector2.zero;
-    private Vector2 gravity = new Vector3(0, -400.0f);
+    private Vector2 gravity = new Vector2(0, -400.0f);
 
     private const float FORCE = 800f;
     private const float BOUNCE_COEFFICIENT = 0.6f;
@@ -56,7 +56,7 @@ public class FishingMeter : MonoBehaviour
         float backgroundHeight = backgroundImage.rectTransform.rect.height;
         
         Vector4 borders = backgroundImage.sprite.border;
-        float borderPixelsPerUnit = Mathf.Max(backgroundImage.pixelsPerUnit * backgroundImage.pixelsPerUnitMultiplier, Mathf.Epsilon);
+        float borderPixelsPerUnit = Mathf.Max(backgroundImage.pixelsPerUnit, Mathf.Epsilon);
 
         borders /= borderPixelsPerUnit;
         

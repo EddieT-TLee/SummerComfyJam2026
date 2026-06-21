@@ -33,8 +33,7 @@ public class ProgressBar : MonoBehaviour
         float borderHeight = borderRect.rect.height;
 
         Vector4 backgroundBorders = borderBackgroundImage.sprite != null ? borderBackgroundImage.sprite.border : Vector4.zero;
-        float borderPixelsPerUnit = Mathf.Max(borderBackgroundImage.pixelsPerUnit * borderBackgroundImage.pixelsPerUnitMultiplier, Mathf.Epsilon);
-
+        float borderPixelsPerUnit = Mathf.Max(borderBackgroundImage.pixelsPerUnit, Mathf.Epsilon);
         borders = backgroundBorders / borderPixelsPerUnit;
 
         backgroundWidth = borderWidth - borders.x - borders.z;
